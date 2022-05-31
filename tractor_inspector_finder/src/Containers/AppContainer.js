@@ -11,6 +11,7 @@ const AppContainer = () => {
             <nav>
 
                 <Link to="admin">Admin</Link>
+                <Link to="/"> Home</Link>
 
             </nav>
 

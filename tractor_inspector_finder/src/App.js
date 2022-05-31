@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
 
     <Routes>
-      <Route path="/" element={<AppContainer />} >
+        <Route path="/" element={<AppContainer />} >
         <Route path="/" element={<HomeContainer />} />
         <Route path="/admin" element={<AdminContainer />} />
       </Route>
