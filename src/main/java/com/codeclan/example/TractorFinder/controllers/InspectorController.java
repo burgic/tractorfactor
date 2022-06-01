@@ -21,7 +21,14 @@ public class InspectorController {
     TractorRepository tractorRepository;
 
     @GetMapping(value = "/inspectors")
-    public ResponseEntity<List<Inspector>> getAllInspectors(){
+    public ResponseEntity<List<Inspector>> inspectorInfo
+            (@RequestParam(name="minLat", required = false) Double minLat,
+             @RequestParam(name="maxLat", required = false) Double maxLat,
+             @RequestParam(name="minLng", required = false) Double minLng,
+             @RequestParam(name="maxLng", required = false) Double maxLng){
+        if (minLat != null && maxLat != null && minLng != null && maxLng != null){
+            return new ResponseEntity<>(inspectorRepository.findByLatGreaterThanAndLatLessThanAndLngGreaterThanAndLngLessThan(minLat, maxLat, minLng, maxLng), HttpStatus.OK);
+        }
         return new ResponseEntity<>(inspectorRepository.findAll(), HttpStatus.OK);
     }
 
