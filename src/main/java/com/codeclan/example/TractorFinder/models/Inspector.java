@@ -147,6 +147,8 @@ public class Inspector {
         return tractorIds;
     }
 
+    public void addTractorId(Integer tractorId){this.tractorIds.add(tractorId);}
+
     public void setTractorIds(ArrayList tractorIds) {
         this.tractorIds = tractorIds;
     }
