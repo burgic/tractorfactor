@@ -44,18 +44,18 @@ public class DataLoader implements ApplicationRunner {
         Tractor tractor6 = new Tractor("Claas");
         tractorRepository.save(tractor6);
 
-        Inspector inspector1 = new Inspector("Morse", "FK14 7NZ", "1 I Heart Tractors Wayyyyy", "012346847284", "Morse@tractors.com", 56.143209, -3.634701);
-        inspectorRepository.save(inspector1);
-        inspector1.addTractor(tractor1);
-        inspectorRepository.save(inspector1);
-        inspector1.addTractor(tractor4);
-        inspectorRepository.save(inspector1);
-
-        Inspector inspector2 = new Inspector("Gadget", "FK5 4XE", "19 fun with tractors lane, Tractorton, Farmshire", "0875634959273", "Gadget@tractorfun.com", 56.037247, -3.819953);
-        inspectorRepository.save(inspector2);
-
-        Inspector inspector3 = new Inspector("Poirot", "EH4 1HY", "21 joy with tractors road, Tractor City, West Farmerton", "087563495444", "Hercule@tractormurders.com", 55.958538, -3.212202);
-        inspectorRepository.save(inspector3);
+//        Inspector inspector1 = new Inspector("Morse", "FK14 7NZ", "1 I Heart Tractors Wayyyyy", "012346847284", "Morse@tractors.com", 56.143209, -3.634701);
+//        inspectorRepository.save(inspector1);
+//        inspector1.addTractor(tractor1);
+//        inspectorRepository.save(inspector1);
+//        inspector1.addTractor(tractor4);
+//        inspectorRepository.save(inspector1);
+//
+//        Inspector inspector2 = new Inspector("Gadget", "FK5 4XE", "19 fun with tractors lane, Tractorton, Farmshire", "0875634959273", "Gadget@tractorfun.com", 56.037247, -3.819953);
+//        inspectorRepository.save(inspector2);
+//
+//        Inspector inspector3 = new Inspector("Poirot", "EH4 1HY", "21 joy with tractors road, Tractor City, West Farmerton", "087563495444", "Hercule@tractormurders.com", 55.958538, -3.212202);
+//        inspectorRepository.save(inspector3);
 
         ReadCSV readCSV = new ReadCSV();
         Scanner sc = new Scanner(new File("/Users/user/codeclan_work/project_3/tractorfactor/McCormickTest.csv"));

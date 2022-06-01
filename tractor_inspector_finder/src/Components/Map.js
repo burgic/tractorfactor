@@ -99,9 +99,9 @@ export class MapComponent extends Component {
             >
             <Marker icon={'http://maps.google.com/mapfiles/ms/icons/green-dot.png'} position={{lat:location.lat, lng:location.lng}} >
             </Marker>
-            {/* {this.state.markerDetails} */}
+            {this.state.markerDetails}
 
-            {/* {this.state.isOpen === true ? <InfoWindow 
+            {this.state.isOpen === true ? <InfoWindow 
             inspector={this.state.activeMarker} 
             position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
             visible={true}>
@@ -115,7 +115,7 @@ export class MapComponent extends Component {
                         <li>{this.state.activeMarker.phoneNumber}</li>
                         <li>{this.state.activeMarker.email}</li>
                     </ul>
-                </div></InfoWindow> : null} */}
+                </div></InfoWindow> : null}
 
             </Map>
             </div>
