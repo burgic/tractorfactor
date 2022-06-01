@@ -37,6 +37,10 @@ public class Inspector {
     @Column(name="lng")
     private double lng;
 
+
+    @Column(name="tractor_ids")
+    private ArrayList tractorIds;
+
     @JsonIgnoreProperties({"inspectors"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -57,6 +61,7 @@ public class Inspector {
         this.lat = lat;
         this.lng = lng;
         this.tractors = new ArrayList<>();
+        this.tractorIds = new ArrayList<>();
     }
 
     public Inspector(){
@@ -136,5 +141,19 @@ public class Inspector {
 
     public void addTractor(Tractor tractor){
         this.tractors.add(tractor);
+    }
+
+    public ArrayList getTractorIds() {
+        return tractorIds;
+    }
+
+    public void addTractorId(Integer tractorId){this.tractorIds.add(tractorId);}
+
+    public void setTractorIds(ArrayList tractorIds) {
+        this.tractorIds = tractorIds;
+    }
+
+    public int getNumberOfTractorIds(){
+        return this.tractorIds.size();
     }
 }

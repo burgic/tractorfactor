@@ -3,6 +3,7 @@ package com.codeclan.example.TractorFinder.controllers;
 import com.codeclan.example.TractorFinder.models.Inspector;
 import com.codeclan.example.TractorFinder.models.Tractor;
 import com.codeclan.example.TractorFinder.repositories.InspectorRepository;
+import com.codeclan.example.TractorFinder.repositories.TractorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ public class InspectorController {
     @Autowired
     InspectorRepository inspectorRepository;
 
+    @Autowired
+    TractorRepository tractorRepository;
+
     @GetMapping(value = "/inspectors")
     public ResponseEntity<List<Inspector>> getAllInspectors(){
         return new ResponseEntity<>(inspectorRepository.findAll(), HttpStatus.OK);
@@ -28,7 +32,22 @@ public class InspectorController {
 
     @PostMapping(value = "/inspectors")
     public ResponseEntity<Inspector> postInspector(@RequestBody Inspector inspector){
-        inspectorRepository.save(inspector);
+        Inspector inspectorToAdd = new Inspector(
+                inspector.getName(),
+                inspector.getPostcode(),
+                inspector.getAddress(),
+                inspector.getPhoneNumber(),
+                inspector.getEmail(),
+                inspector.getLat(),
+                inspector.getLng()
+        );
+
+        for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
+            int id = (int)inspector.getTractorIds().get(i);
+            Tractor tractor = tractorRepository.findById((long) id).get();
+            inspectorToAdd.addTractor(tractor);
+        }
+        inspectorRepository.save(inspectorToAdd);
         return new ResponseEntity<>(inspector, HttpStatus.CREATED);
     }
 
