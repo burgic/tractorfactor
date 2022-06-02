@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufacturer}) => {
 
     const [postCode, setPostCode] = useState(null)
-    const [tractorManufacturer, setTractorManufacturer] = useState(null)
+    const [tractorManufacturer, setTractorManufacturer] = useState("Massey Ferguson")
     const [mappedTractors, setMappedTractors] = useState(null)
 
     useEffect(()=> {
@@ -29,8 +29,6 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
         setPostCode(evt.target.value)
         
     }
-
-   
 
     const handleSubmit = (evt) => {
         evt.preventDefault()

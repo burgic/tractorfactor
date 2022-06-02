@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import TractorLocationForm from '../Components/TractorLocationForm';
 import MapComponent from '../Components/Map';
+import Button from '@mui/material/Button';
 
 
 const HomeContainer = () => {
@@ -101,7 +102,8 @@ const HomeContainer = () => {
     
         <div>
 
-            <h1>Home Container</h1>
+            <Button variant="contained">Hello World</Button>
+
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
 

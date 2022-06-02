@@ -46,7 +46,7 @@ export class MapComponent extends Component {
     setMarkers = () => {
         const markerDeets = this.state.inspectorInfo.map((inspector, index) => {
             if(inspector.distance < this.state.searchDistance){
-            return   <Marker key={index} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
+            return   <Marker  key={index} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
                     </Marker>
             }
                 
@@ -82,14 +82,11 @@ export class MapComponent extends Component {
         this.setState({inspectorInfo : temp})
     }
 
-    
-
-
     render() {
         const mapStyles = {
             width: '50%',
             height: '50%',
-            marginTop:'15rem'
+            // marginTop:'15rem'
         };
 
         const location = this.props.tractorLocationData[0]
@@ -108,46 +105,47 @@ export class MapComponent extends Component {
             <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
             <h2>{this.state.searchDistance} miles</h2>
             <div className="map-container">
-            <Map
-            google={this.props.google}
-            zoom={8}
-            style={mapStyles}
-            initialCenter={{lat:location.lat, lng:location.lng}}
-            >
+            
+                <Map
+                google={this.props.google}
+                zoom={8}
+                style={mapStyles}
+                initialCenter={{lat:location.lat, lng:location.lng}}
+                >
                 
-            <Marker icon={'http://maps.google.com/mapfiles/ms/icons/green-dot.png'} position={{lat:location.lat, lng:location.lng}} >
-            </Marker>
-            <Circle
-                  center={{
-                    lat:location.lat,
-                    lng:location.lng
-                  }}
-                  radius={this.state.searchDistance*1600}
-                  options="strokeColor: #ffffff"
-                />
-            {this.state.markerDetails}
+                <Marker icon={'http://maps.google.com/mapfiles/ms/icons/green-dot.png'} visible={true} position={{lat:location.lat, lng:location.lng}} >
+                </Marker>
+                <Circle
+                    center={{
+                        lat:location.lat,
+                        lng:location.lng
+                    }}
+                    radius={this.state.searchDistance*1600}
+                    options="strokeColor: #ffffff"
+                    />
+                {this.state.markerDetails}
 
-            {this.state.isOpen === true ? <InfoWindow 
-            inspector={this.state.activeMarker} 
-            position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
-            visible={true}>
-                <div>
-                    <h3>Info</h3>
-                    <ul>
-                        <li>{this.state.activeMarker.name}</li>
-                        <li>{this.state.activeMarker.address}</li>
-                        <li>{this.state.activeMarker.postcode}</li>
-                        <li>{this.state.activeMarker.distance}</li>
-                        <li>{this.state.activeMarker.phoneNumber}</li>
-                        <li>{this.state.activeMarker.email}</li>
-                    </ul>
+                {this.state.isOpen === true ? <InfoWindow 
+                inspector={this.state.activeMarker} 
+                position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
+                visible={true}>
+                    <div>
+                        <h3>Info</h3>
+                        <ul>
+                            <li>{this.state.activeMarker.name}</li>
+                            <li>{this.state.activeMarker.address}</li>
+                            <li>{this.state.activeMarker.postcode}</li>
+                            <li>{this.state.activeMarker.distance}</li>
+                            <li>{this.state.activeMarker.phoneNumber}</li>
+                            <li>{this.state.activeMarker.email}</li>
+                        </ul>
                 </div></InfoWindow> : null}
 
             </Map>
             </div>
             <div>
 
-            <InspectorInformation inspectorsInfo = {this.state.inspectorInfo}/>
+                 <InspectorInformation inspectorsInfo={this.state.inspectorInfo}/>
             
             </div>
             </>

@@ -7,7 +7,6 @@ const AppContainer = () => {
     return (
         <div>
 
-            <h1>App Container</h1>
             <nav>
 
                 <Link to="admin">Admin</Link>
