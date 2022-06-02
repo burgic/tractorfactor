@@ -78,5 +78,27 @@ public class DataLoader implements ApplicationRunner {
             inspector.addTractor(tractor5);
             inspectorRepository.save(inspector);
             }
+
+        ReadCSV readCSV2 = new ReadCSV();
+        Scanner sc2 = new Scanner(new File("/Users/user/codeclan_work/project_3/tractorfactor/UKClaas.csv"));
+        sc2.useDelimiter(",");
+        List<List<String>> Info2 = new ArrayList<>();
+        while (sc2.hasNext()) {
+            Info2.add(readCSV2.getRecordFromLine(sc2.nextLine()));
+        }
+        System.out.println(Info2);
+
+        for (int i = 1; i < Info2.size(); i++) {
+            Inspector inspector = new Inspector(Info2.get(i).get(0),
+                    Info2.get(i).get(1),
+                    Info2.get(i).get(2),
+                    Info2.get(i).get(3),
+                    Info2.get(i).get(4),
+                    Double.parseDouble(Info2.get(i).get(5)),
+                    Double.parseDouble(Info2.get(i).get(6))  );
+            inspectorRepository.save(inspector);
+            inspector.addTractor(tractor6);
+            inspectorRepository.save(inspector);
+        }
         }
     }

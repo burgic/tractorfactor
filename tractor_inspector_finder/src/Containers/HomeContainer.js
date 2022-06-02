@@ -6,16 +6,36 @@ import MapComponent from '../Components/Map';
 
 const HomeContainer = () => {
 
-
+    const [tractors, setTractors] = useState(null)
+    
     const [tractorLocationData, setTractorLocationData] = useState(null)
     const [tractorLatLong, setTractorLatLong] = useState(null)
     const [tractorLatLongRanges, setTractorLatLongRanges] = useState(null)
     const [searchCode, setSearchCode] = useState(null)
+    const [manufacturer, setManufacturer] = useState(null)
     const [inspectorDestinations, setInspectorDestinations] = useState(null)    
+
+    const getTractors = () => {
+        fetch(`http://localhost:8080/tractors`)
+        .then(res => res.json())
+        .then(data => setTractors(data))
+    }
+
+    useEffect(() => {
+        getTractors()
+    }, [])
+
+    
 
     const handleSearchCode = (code) => {
         setSearchCode(code)
     }
+
+    const handleTractorManufacturer = (manufacturer)=> {
+        setManufacturer(manufacturer)
+    }
+
+  
 
     useEffect (() => { // can this be added to other useEffect?
         if (searchCode != null){
@@ -40,10 +60,10 @@ const HomeContainer = () => {
 
     const prepareDataForFetchRequest = () => {
         setTractorLatLongRanges({
-            minLat: tractorLocationData.result.latitude-0.5,
-            maxLat: tractorLocationData.result.latitude+0.5,
-            minLng: tractorLocationData.result.longitude-0.5,
-            maxLng: tractorLocationData.result.longitude+0.5
+            minLat: tractorLocationData.result.latitude-1.0,
+            maxLat: tractorLocationData.result.latitude+1.0,
+            minLng: tractorLocationData.result.longitude-1.0,
+            maxLng: tractorLocationData.result.longitude+1.0
         })
     }
 
@@ -54,7 +74,7 @@ const HomeContainer = () => {
     }, [tractorLatLongRanges])
 
     const fetchInspectors = () => {
-        fetch(`http://localhost:8080/inspectors?minLat=${tractorLatLongRanges.minLat}&maxLat=${tractorLatLongRanges.maxLat}&minLng=${tractorLatLongRanges.minLng}&maxLng=${tractorLatLongRanges.maxLng}`)
+        fetch(`http://localhost:8080/inspectors?manufacturer=${manufacturer}&minLat=${tractorLatLongRanges.minLat}&maxLat=${tractorLatLongRanges.maxLat}&minLng=${tractorLatLongRanges.minLng}&maxLng=${tractorLatLongRanges.maxLng}`)
         .then(res => res.json())
         .then(data => setInspectorDestinations(data)) 
     }
@@ -67,12 +87,12 @@ const HomeContainer = () => {
     }, [inspectorDestinations])
 
 
-        const getInspectorLatLong = () => {
-            const inspectorLatAndLong = inspectorDestinations.map((inspector) => {
-            return {lat:inspector.lat, lng: inspector.lng}
-        })
-        setInspectorLatLong(inspectorLatAndLong)
-        }
+    const getInspectorLatLong = () => {
+        const inspectorLatAndLong = inspectorDestinations.map((inspector) => {
+        return {lat:inspector.lat, lng: inspector.lng}
+    })
+    setInspectorLatLong(inspectorLatAndLong)
+    }
         
 
 
@@ -82,7 +102,7 @@ const HomeContainer = () => {
         <div>
 
             <h1>Home Container</h1>
-            <TractorLocationForm handleSearchCode={handleSearchCode}/>
+            <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
 
 

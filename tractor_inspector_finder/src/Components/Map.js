@@ -1,4 +1,4 @@
-import {Map, GoogleApiWrapper, InfoWindow, Marker, DistanceMatrixService} from "google-maps-react";
+import {Map, GoogleApiWrapper, InfoWindow, Marker, Circle, DistanceMatrixService} from "google-maps-react";
 import React, {Component} from "react";
 import config from "../cofig";
 import InspectorInformation from "./InspectorInformation";
@@ -15,7 +15,8 @@ export class MapComponent extends Component {
             distanceResponse: null,
             markerDetails: null,
             isOpen:false,
-            activeMarker:null
+            activeMarker:null,
+            searchDistance: 10.00
             }
         };
     
@@ -37,14 +38,17 @@ export class MapComponent extends Component {
             console.log("updated")
             this.setMarkers()
         }
+        if(this.state.searchDistance !== prevState.searchDistance){
+            this.setMarkers()
+        }
     }
 
     setMarkers = () => {
         const markerDeets = this.state.inspectorInfo.map((inspector, index) => {
+            if(inspector.distance < this.state.searchDistance){
             return   <Marker key={index} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
-                    
                     </Marker>
-                
+            }
                 
         })
         this.setState({markerDetails: markerDeets})
@@ -78,6 +82,8 @@ export class MapComponent extends Component {
         this.setState({inspectorInfo : temp})
     }
 
+    
+
 
     render() {
         const mapStyles = {
@@ -88,8 +94,19 @@ export class MapComponent extends Component {
 
         const location = this.props.tractorLocationData[0]
 
+        const handleIncreaseClick = () => {
+            this.setState({searchDistance:this.state.searchDistance+5})
+        }
+
+        const handleDecreaseClick = () => {
+            this.setState({searchDistance:this.state.searchDistance-5})
+        }
+
         return(
             <>
+            <button onClick={handleIncreaseClick}>Increase Search Radius</button>
+            <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
+            <h2>{this.state.searchDistance} miles</h2>
             <div className="map-container">
             <Map
             google={this.props.google}
@@ -97,8 +114,17 @@ export class MapComponent extends Component {
             style={mapStyles}
             initialCenter={{lat:location.lat, lng:location.lng}}
             >
+                
             <Marker icon={'http://maps.google.com/mapfiles/ms/icons/green-dot.png'} position={{lat:location.lat, lng:location.lng}} >
             </Marker>
+            <Circle
+                  center={{
+                    lat:location.lat,
+                    lng:location.lng
+                  }}
+                  radius={this.state.searchDistance*1600}
+                  options="strokeColor: #ffffff"
+                />
             {this.state.markerDetails}
 
             {this.state.isOpen === true ? <InfoWindow 
