@@ -60,10 +60,10 @@ const HomeContainer = () => {
 
     const prepareDataForFetchRequest = () => {
         setTractorLatLongRanges({
-            minLat: tractorLocationData.result.latitude-0.5,
-            maxLat: tractorLocationData.result.latitude+0.5,
-            minLng: tractorLocationData.result.longitude-0.5,
-            maxLng: tractorLocationData.result.longitude+0.5
+            minLat: tractorLocationData.result.latitude-1.0,
+            maxLat: tractorLocationData.result.latitude+1.0,
+            minLng: tractorLocationData.result.longitude-1.0,
+            maxLng: tractorLocationData.result.longitude+1.0
         })
     }
 
