@@ -7,22 +7,22 @@ import React from 'react';
 
 
 function App() {
+
   return (
+    <div className="App">
+      <h1>Find me an inspector</h1>
+      <BrowserRouter>
 
-    <>
-    <h1>Find me an inspector</h1>
-    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<AppContainer />} >
+          <Route path="/" element={<HomeContainer />} />
+          <Route path="/admin" element={<AdminContainer />} />
+        </Route>
+      </Routes>
 
-    <Routes>
-        <Route path="/" element={<AppContainer />} >
-        <Route path="/" element={<HomeContainer />} />
-        <Route path="/admin" element={<AdminContainer />} />
-      </Route>
-    </Routes>
+      </BrowserRouter>
 
-    </BrowserRouter>
-
-    </>
+    </div>
 
 
   );

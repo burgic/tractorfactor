@@ -105,7 +105,7 @@ export class MapComponent extends Component {
         }
 
         return(
-            <>
+            <div className="map">
             <h2>{this.state.searchDistance} miles</h2>
             <div className="map-container">
             <button onClick={handleIncreaseClick}>Increase Search Radius</button>
@@ -135,16 +135,21 @@ export class MapComponent extends Component {
                 position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
                 visible={true}>
                     <div>
-                        <h3>Info</h3>
-                        <ul>
-                            <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
-                            <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
-                            <li><span className="bold">Postcode: </span>{this.state.activeMarker.postcode}</li>
-                            <li><span className="bold">Distance: </span>{this.state.activeMarker.distance}</li>
-                            <li><span className="bold">Phone: </span>{this.state.activeMarker.phoneNumber}</li>
-                            <li><span className="bold">Email: </span>{this.state.activeMarker.email}</li>
-                        </ul>
-                </div></InfoWindow> : null}
+                     
+                            <h3>Info</h3>
+                    
+                        
+                            <ul>
+                                <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
+                                <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
+                                <li><span className="bold">Postcode: </span>{this.state.activeMarker.postcode}</li>
+                                <li><span className="bold">Distance: </span>{this.state.activeMarker.distance}</li>
+                                <li><span className="bold">Phone: </span>{this.state.activeMarker.phoneNumber}</li>
+                                <li><span className="bold">Email: </span>{this.state.activeMarker.email}</li>
+                            </ul>
+                       
+                    </div>
+                </InfoWindow> : null}
 
             </Map>
             </div>
@@ -153,7 +158,7 @@ export class MapComponent extends Component {
                  <InspectorInformation inspectorsInfo={this.state.inspectorInfo}/>
             
             </div>
-            </>
+            </div>
         )
     }
 }

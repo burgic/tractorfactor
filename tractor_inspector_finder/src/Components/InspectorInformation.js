@@ -37,10 +37,10 @@ const InspectorInformation = ({inspectorsInfo}) => {
     })
     
     return (
-        <>
+        <div className ="inspector-information">
             <h2>Inspector Information</h2>
             <ul>{inspectorInfo}</ul>
-        </>
+        </div>
     )
 }
 
