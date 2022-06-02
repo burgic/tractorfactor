@@ -87,7 +87,7 @@ const InspectorSearchForm = () => {
             <form >
                 <label htmlFor='Inspector'>Inspector By Name: </label>
                 <input onChange={handleChange} type="search" ></input>
-                <input type="submit" value="submit" />
+                
             </form>
 
             {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
