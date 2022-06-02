@@ -32,7 +32,7 @@ public class InspectorController {
             return new ResponseEntity<>(inspectorRepository.findByTractorsManufacturerAndLatGreaterThanAndLatLessThanAndLngGreaterThanAndLngLessThan(manufacturer, minLat, maxLat, minLng, maxLng), HttpStatus.OK);
         }
         if (name != null){
-            return new ResponseEntity<>(inspectorRepository.findByName(name), HttpStatus.OK);
+            return new ResponseEntity<>(inspectorRepository.findByNameContains(name), HttpStatus.OK);
         }
         return new ResponseEntity<>(inspectorRepository.findAll(), HttpStatus.OK);
     }

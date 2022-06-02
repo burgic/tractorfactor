@@ -33,8 +33,8 @@ class TractorFinderApplicationTests {
 	}
 
 	@Test
-	public void canFindByName(){
-		List<Inspector> inspectors = inspectorRepository.findByName("A B Wight Engineering");
+	public void canFindByNameLike(){
+		List<Inspector> inspectors = inspectorRepository.findByNameContains("A ");
 		assertEquals(1, inspectors.size());
 	}
 

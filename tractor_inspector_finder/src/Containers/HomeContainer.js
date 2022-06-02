@@ -34,8 +34,6 @@ const HomeContainer = () => {
         getTractors()
     }, [])
 
-    
-
     const handleSearchCode = (code) => {
         setSearchCode(code)
     }
@@ -43,8 +41,6 @@ const HomeContainer = () => {
     const handleTractorManufacturer = (manufacturer)=> {
         setManufacturer(manufacturer)
     }
-
-  
 
     useEffect (() => { // can this be added to other useEffect?
         if (searchCode != null){

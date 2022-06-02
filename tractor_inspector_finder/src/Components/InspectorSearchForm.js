@@ -15,8 +15,20 @@ const InspectorSearchForm = () => {
         setSearchValue(evt.target.value)
     }
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault()
+    // const handleSubmit = (evt) => {
+    //     evt.preventDefault()
+    //     fetch(`http://localhost:8080/inspectors?name=${searchValue}`)
+    //     .then(res => res.json())
+    //     .then(data => setSearchResults(data))
+    // }
+
+    useEffect(() => {
+        if (searchValue !== null){
+        search()
+        }
+    }, [searchValue])
+
+    const search = () => {
         fetch(`http://localhost:8080/inspectors?name=${searchValue}`)
         .then(res => res.json())
         .then(data => setSearchResults(data))
@@ -72,7 +84,7 @@ const InspectorSearchForm = () => {
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <label htmlFor='Inspector'>Inspector By Name: </label>
                 <input onChange={handleChange} type="search" ></input>
                 <input type="submit" value="submit" />
