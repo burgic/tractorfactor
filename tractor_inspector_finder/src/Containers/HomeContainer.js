@@ -18,15 +18,21 @@ const HomeContainer = () => {
 
     const getTractors = () => {
         fetch(`http://localhost:8080/tractors`)
-        .then(res => res.json())
+        .then((res) => {
+            if (res.ok){
+                return res.json();
+            }
+            throw new Error('Something went wrong');
+        })
         .then(data => setTractors(data))
+        .catch((error) => {
+            console.log(error)
+        });
     }
 
     useEffect(() => {
         getTractors()
     }, [])
-
-    
 
     const handleSearchCode = (code) => {
         setSearchCode(code)
@@ -36,8 +42,6 @@ const HomeContainer = () => {
         setManufacturer(manufacturer)
     }
 
-  
-
     useEffect (() => { // can this be added to other useEffect?
         if (searchCode != null){
         getTractorLatAndLong()
@@ -46,8 +50,16 @@ const HomeContainer = () => {
 
     const getTractorLatAndLong = () => { // geocode postcode data
         fetch(`http://api.postcodes.io/postcodes/${searchCode}`)
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok){
+                return res.json();
+            }
+            throw new Error('try a different post code')
+        })
         .then(data => setTractorLocationData(data)) // listening for state change, triggers when not null
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     let tractorLatAndLong;
@@ -76,8 +88,16 @@ const HomeContainer = () => {
 
     const fetchInspectors = () => {
         fetch(`http://localhost:8080/inspectors?manufacturer=${manufacturer}&minLat=${tractorLatLongRanges.minLat}&maxLat=${tractorLatLongRanges.maxLat}&minLng=${tractorLatLongRanges.minLng}&maxLng=${tractorLatLongRanges.maxLng}`)
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok){
+            return res.json();
+            }
+            throw new Error('something went wrong')
+        })
         .then(data => setInspectorDestinations(data)) 
+        .catch((error) => {
+            console.log(error)
+        });
     }
     
         const [inspectorLatLong, setInspectorLatLong] = useState(null)
@@ -102,7 +122,7 @@ const HomeContainer = () => {
     
         <div>
 
-            <Button variant="contained">Hello World</Button>
+          
 
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}

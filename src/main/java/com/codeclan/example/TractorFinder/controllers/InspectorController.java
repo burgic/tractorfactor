@@ -26,9 +26,13 @@ public class InspectorController {
              @RequestParam(name="minLat", required = false) Double minLat,
              @RequestParam(name="maxLat", required = false) Double maxLat,
              @RequestParam(name="minLng", required = false) Double minLng,
-             @RequestParam(name="maxLng", required = false) Double maxLng){
+             @RequestParam(name="maxLng", required = false) Double maxLng,
+            @RequestParam(name="name", required = false) String name){
         if (manufacturer!= null && minLat != null && maxLat != null && minLng != null && maxLng != null){
             return new ResponseEntity<>(inspectorRepository.findByTractorsManufacturerAndLatGreaterThanAndLatLessThanAndLngGreaterThanAndLngLessThan(manufacturer, minLat, maxLat, minLng, maxLng), HttpStatus.OK);
+        }
+        if (name != null){
+            return new ResponseEntity<>(inspectorRepository.findByNameContains(name), HttpStatus.OK);
         }
         return new ResponseEntity<>(inspectorRepository.findAll(), HttpStatus.OK);
     }

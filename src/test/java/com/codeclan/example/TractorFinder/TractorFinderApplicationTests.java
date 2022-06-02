@@ -32,4 +32,10 @@ class TractorFinderApplicationTests {
 		assertEquals(5, inspectors.size());
 	}
 
+	@Test
+	public void canFindByNameLike(){
+		List<Inspector> inspectors = inspectorRepository.findByNameContains("A ");
+		assertEquals(1, inspectors.size());
+	}
+
 }
