@@ -7,3 +7,10 @@
   top:0;
 }
 
+li > span > .bold {
+  font-weight:bold;
+}
+
+ul{
+  list-style:none;
+}

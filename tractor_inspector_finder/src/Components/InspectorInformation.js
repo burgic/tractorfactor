@@ -33,7 +33,7 @@ const InspectorInformation = ({inspectorsInfo}) => {
     // }
 
     const inspectorInfo = inspectorsInfo.map((inspector, index) => {
-        return <li key={index}>{inspector.address} {inspector.distance} miles away</li>
+        return <li key={index}><span className="bold">Address: </span>{inspector.address} <span className="bold">Distance</span>{inspector.distance} miles away</li>
     })
     
     return (

@@ -2,6 +2,7 @@ import {Map, GoogleApiWrapper, InfoWindow, Marker, Circle, DistanceMatrixService
 import React, {Component} from "react";
 import config from "../cofig";
 import InspectorInformation from "./InspectorInformation";
+import Tractor from '../static/tractor (3).png'
 
 
 
@@ -89,31 +90,34 @@ export class MapComponent extends Component {
             // marginTop:'15rem'
         };
 
+       
+
         const location = this.props.tractorLocationData[0]
 
         const handleIncreaseClick = () => {
             this.setState({searchDistance:this.state.searchDistance+5})
+            this.setState({isOpen:false})
         }
 
         const handleDecreaseClick = () => {
             this.setState({searchDistance:this.state.searchDistance-5})
+            this.setState({isOpen:false})
         }
 
         return(
             <>
-            <button onClick={handleIncreaseClick}>Increase Search Radius</button>
-            <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
             <h2>{this.state.searchDistance} miles</h2>
             <div className="map-container">
-            
+            <button onClick={handleIncreaseClick}>Increase Search Radius</button>
+            <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
                 <Map
                 google={this.props.google}
                 zoom={8}
                 style={mapStyles}
                 initialCenter={{lat:location.lat, lng:location.lng}}
                 >
-                
-                <Marker icon={'http://maps.google.com/mapfiles/ms/icons/green-dot.png'} visible={true} position={{lat:location.lat, lng:location.lng}} >
+               
+                <Marker icon={Tractor} visible={true} position={{lat:location.lat, lng:location.lng}} >
                 </Marker>
                 <Circle
                     center={{
@@ -123,6 +127,7 @@ export class MapComponent extends Component {
                     radius={this.state.searchDistance*1600}
                     options="strokeColor: #ffffff"
                     />
+                    
                 {this.state.markerDetails}
 
                 {this.state.isOpen === true ? <InfoWindow 
@@ -132,12 +137,12 @@ export class MapComponent extends Component {
                     <div>
                         <h3>Info</h3>
                         <ul>
-                            <li>{this.state.activeMarker.name}</li>
-                            <li>{this.state.activeMarker.address}</li>
-                            <li>{this.state.activeMarker.postcode}</li>
-                            <li>{this.state.activeMarker.distance}</li>
-                            <li>{this.state.activeMarker.phoneNumber}</li>
-                            <li>{this.state.activeMarker.email}</li>
+                            <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
+                            <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
+                            <li><span className="bold">Postcode: </span>{this.state.activeMarker.postcode}</li>
+                            <li><span className="bold">Distance: </span>{this.state.activeMarker.distance}</li>
+                            <li><span className="bold">Phone: </span>{this.state.activeMarker.phoneNumber}</li>
+                            <li><span className="bold">Email: </span>{this.state.activeMarker.email}</li>
                         </ul>
                 </div></InfoWindow> : null}
 
