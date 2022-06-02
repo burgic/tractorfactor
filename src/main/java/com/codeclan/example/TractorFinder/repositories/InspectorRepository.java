@@ -8,4 +8,5 @@ import java.util.List;
 public interface InspectorRepository extends JpaRepository<Inspector, Long> {
     List<Inspector> findByLatGreaterThanAndLatLessThanAndLngGreaterThanAndLngLessThan(double minLat, double maxLat, double minLng, double maxLng);
     List<Inspector> findByTractorsManufacturerAndLatGreaterThanAndLatLessThanAndLngGreaterThanAndLngLessThan(String manufacturer, double minLat, double maxLat, double minLng, double maxLng);
+    List<Inspector> findByName(String name);
 }

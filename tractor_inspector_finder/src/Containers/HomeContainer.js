@@ -102,7 +102,7 @@ const HomeContainer = () => {
     
         <div>
 
-            <Button variant="contained">Hello World</Button>
+          
 
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
