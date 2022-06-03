@@ -10,6 +10,7 @@ const InspectorSearchForm = () => {
     const [inspectorToUpdate, setInspectorToUpdate] = useState(null)
     const [idToDelete, setIdToDelete] = useState(null)
     const [isUpdate, setIsUpdate] = useState(false)
+    const [deleteWorked, setDeleteWorked] = useState(false)
 
     const handleChange = (evt) => {
         setSearchValue(evt.target.value)
@@ -45,6 +46,7 @@ const InspectorSearchForm = () => {
     const mapResults = () => {
         const mappedResults = searchResults.map((result, index) => {
             return <tr><td>{result.name}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
+            
         })
          setSearchResultsMap(mappedResults)
     }
@@ -60,6 +62,18 @@ const InspectorSearchForm = () => {
     const deleteInspector = () => {
         fetch(`http://localhost:8080/inspectors/${idToDelete}`,{
         method:'DELETE'})
+        .then(res=> {
+            if (res.ok) {
+                setDeleteWorked(true)
+                setTimeout(() => {
+                    setDeleteWorked(false);
+                }, 2000)
+            } 
+            throw new Error('shiiiit')
+        })
+        .catch((error) => {
+            console.log(error)
+            });
     }
 
     useEffect(() => {
@@ -79,20 +93,17 @@ const InspectorSearchForm = () => {
         .then(res => res.json())
         .then(data => setInspectorToUpdate(data))
     }
-    
-
 
     return(
         <>
             <form >
                 <label htmlFor='Inspector'>Inspector By Name: </label>
                 <input onChange={handleChange} type="search" ></input>
-                
             </form>
 
             {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
             {inspectorToUpdate !== null ? <UpdateInspectorForm inspectorToUpdate={inspectorToUpdate} /> : null}
-            
+            {deleteWorked === true? <h3>Delete Successful</h3> : null}
         </>
     )
 

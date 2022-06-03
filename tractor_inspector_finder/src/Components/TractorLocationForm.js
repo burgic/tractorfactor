@@ -39,11 +39,11 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="tractor">Manufacturer</label> 
+                <label htmlFor="tractor">Manufacturer: </label> 
                 <select onChange={handleChange} name="tractors" id="tractors">
                     {mappedTractors}
                 </select>
-                <label htmlFor="postcode">Postcode</label> 
+                <label htmlFor="postcode">Postcode: </label> 
                 <input onChange={handlePostcodeChange} type="text" name="postcode" />
                 <input type="submit" value="Search" />
                
