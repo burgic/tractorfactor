@@ -16,6 +16,8 @@ const AddInspectorForm = () => {
     const [tractorObjects, setTractorObjects] = useState(null)
     const [tractorMap, setTractorMap] = useState(null)
 
+    const [updateWorked, setUpdateWorked] = useState(false)
+
     useEffect(() => {
         getTractors()
     }, [])
@@ -131,9 +133,21 @@ const AddInspectorForm = () => {
             headers:{
                 'Content-Type': 'application/json'
             }
-        });
+        })
+        .then(res=> {
+            if (res.ok) {
+                setUpdateWorked(true)
+                setTimeout(() => {
+                    setUpdateWorked(false);
+                }, 2000)
+            } 
+            throw new Error('shiiiit')
+        })
+        .catch((error) => {
+            console.log(error)
+            });
+        }
     }
-}
 
     useEffect(() => {
         if (newInspector !== null){
@@ -145,6 +159,7 @@ const AddInspectorForm = () => {
     
 
     return(
+        <>
         <form onSubmit={handleSubmit}>
             <input onChange={handleChange} type="text"  name="name" placeholder="name" required></input>
             <input onChange={handleChange} type="text"  name="postcode" placeholder="postcode" required></input>
@@ -158,6 +173,8 @@ const AddInspectorForm = () => {
             
             <input type="submit" value="Add Inspector"></input>
         </form>
+        { updateWorked === true ? <h3>Update successful</h3> : null }
+        </>
     )
 }
 
