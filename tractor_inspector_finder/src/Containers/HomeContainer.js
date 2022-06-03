@@ -120,9 +120,7 @@ const HomeContainer = () => {
 
     return (
     
-        <div>
-
-          
+        <div className="home-container">
 
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
