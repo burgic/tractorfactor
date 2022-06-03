@@ -7,7 +7,6 @@ const AddTractorForm = () => {
     const [newTractor, setNewTractor] = useState();
     const [addWorked, setAddWorked] = useState(false);
 
-
     const handleChange = (evt) => {
         setManufacturer(evt.target.value)
     }

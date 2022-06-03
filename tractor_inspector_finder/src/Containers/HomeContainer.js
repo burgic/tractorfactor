@@ -15,6 +15,7 @@ const HomeContainer = () => {
     const [searchCode, setSearchCode] = useState(null)
     const [manufacturer, setManufacturer] = useState(null)
     const [inspectorDestinations, setInspectorDestinations] = useState(null)    
+    const [isError, setIsError] = useState(false)
 
     const getTractors = () => {
         fetch(`http://localhost:8080/tractors`)
@@ -59,6 +60,10 @@ const HomeContainer = () => {
         .then(data => setTractorLocationData(data)) // listening for state change, triggers when not null
         .catch((error) => {
             console.log(error)
+            setIsError(true)
+                setTimeout(() => {
+                    setIsError(false);
+                }, 2000)
         })
     }
 
@@ -123,6 +128,7 @@ const HomeContainer = () => {
         <div className="home-container">
 
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
+            {isError === true ? <h3>No results found.  Please check your postcode.</h3> : null}
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
 
 
