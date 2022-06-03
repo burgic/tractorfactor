@@ -76,6 +76,7 @@ public class DataLoader implements ApplicationRunner {
                     Double.parseDouble(Info.get(i).get(6))  );
             inspectorRepository.save(inspector);
             inspector.addTractor(tractor5);
+            inspector.addTractorId(5);
             inspectorRepository.save(inspector);
             }
 
@@ -98,6 +99,7 @@ public class DataLoader implements ApplicationRunner {
                     Double.parseDouble(Info2.get(i).get(6))  );
             inspectorRepository.save(inspector);
             inspector.addTractor(tractor6);
+            inspector.addTractorId(6);
             inspectorRepository.save(inspector);
         }
         }

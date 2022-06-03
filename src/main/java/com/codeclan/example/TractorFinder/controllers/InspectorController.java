@@ -52,10 +52,12 @@ public class InspectorController {
                 inspector.getEmail(),
                 inspector.getLat(),
                 inspector.getLng()
+
         );
 
         for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
             int id = (int)inspector.getTractorIds().get(i);
+            inspectorToAdd.addTractorId(id);
             Tractor tractor = tractorRepository.findById((long) id).get();
             inspectorToAdd.addTractor(tractor);
         }
@@ -79,6 +81,12 @@ public class InspectorController {
         inspectorToUpdate.setLat(inspector.getLat());
         inspectorToUpdate.setLng(inspector.getLng());
         inspectorRepository.save(inspectorToUpdate);
+        for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
+            int id2 = (int) inspector.getTractorIds().get(i);
+            inspectorToUpdate.addTractorId(id2);
+            Tractor tractor = tractorRepository.findById((long) id2).get();
+            inspectorToUpdate.addTractor(tractor);
+        }
         return new ResponseEntity<>(inspectorToUpdate, HttpStatus.OK);
     }
 }

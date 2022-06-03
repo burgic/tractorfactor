@@ -122,7 +122,7 @@ const AddInspectorForm = () => {
         }
     }, [lat, lng])
 
-
+ 
 
 
     const addInspectorToDb = () => {
@@ -156,6 +156,7 @@ const AddInspectorForm = () => {
     }, [newInspector])
 
 
+    
     
 
     return(
