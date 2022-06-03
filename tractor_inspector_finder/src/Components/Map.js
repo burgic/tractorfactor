@@ -74,12 +74,12 @@ export class MapComponent extends Component {
 
     updateInspectorInfo = () => {
         let temp = [...this.state.inspectorInfo]
-
         for (let i=0; i<temp.length; i++){
             //convert distance into miles and format here before saving it to object
             const distanceInMiles = (this.state.distanceResponse.rows[0].elements[i].distance.value/1600).toFixed(2);
-            temp[i].distance = distanceInMiles
+            temp[i].distance = parseFloat(distanceInMiles)
         } 
+        temp.sort(function(a,b){return a.distance - b.distance})
         this.setState({inspectorInfo : temp})
     }
 

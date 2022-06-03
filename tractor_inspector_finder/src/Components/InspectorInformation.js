@@ -3,36 +3,34 @@ import React, {useState, useEffect} from 'react';
 
 const InspectorInformation = ({inspectorsInfo}) => {
 
-    // const [inspectorInfo, setInspectorInfo] = useState(null)
+    // const [inspectorMappedInfo, setInspectorMappedInfo] = useState(null)
     // const [sortedInspectors, setSortedInspectors] = useState(null)
 
-    // useEffect(() => {
-    //     sortInspectors()
+    // useEffect(()=> {
+    //     breakDownInspectorsInfo()
     // }, [])
+
     
-    // const sortInspectors = () => {
-    //         let newArray = []
-    //         for(let i=0; i<inspectorsInfo.length; i++){
-    //             console.log(inspectorsInfo[i])
-    //         }
-    //         setSortedInspectors(inspectorsInfo)
+    // const breakDownInspectorsInfo = () => {
+    //     const sorted = [...inspectorsInfo]
+    //     setInspectorMappedInfo(sorted)
+       
     // }
 
+//     var Arr = [1, 7, 2, 8, 3, 4, 5, 0, 9];
 
-    // useEffect(() => {
-    //     if (sortedInspectors !== null){
-    //     mapInspectorInfo()
-    //     }
-    // }, [sortedInspectors])
+// for (var i = 1; i < Arr.length; i++)
+//     for (var j = 0; j < i; j++)
+//         if (Arr[i] < Arr[j]) {
+//           var x = Arr[i];
+//           Arr[i] = Arr[j];
+//           Arr[j] = x;
+//         }
 
-    // const mapInspectorInfo = () => {
-    //     const inspectorTheInfo = sortedInspectors.map((inspector, index) => {
-    //         return <li key={index}>{inspector.address} {inspector.distance} miles away</li>
-    //     })
-    //     setInspectorInfo(inspectorTheInfo)
-    // }
+// console.log(Arr);
 
     const inspectorInfo = inspectorsInfo.map((inspector, index) => {
+
         return <li key={index}><span className="bold">Address: </span>{inspector.address} <span className="bold">Distance</span>{inspector.distance} miles away</li>
     })
     
