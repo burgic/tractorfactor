@@ -93,15 +93,12 @@ const InspectorSearchForm = () => {
         .then(res => res.json())
         .then(data => setInspectorToUpdate(data))
     }
-    
-
 
     return(
         <>
             <form >
                 <label htmlFor='Inspector'>Inspector By Name: </label>
                 <input onChange={handleChange} type="search" ></input>
-                
             </form>
 
             {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
