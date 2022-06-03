@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
 
-const InspectorInformation = ({inspectorsInfo}) => {
+const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
+
+    
 
     // const [inspectorMappedInfo, setInspectorMappedInfo] = useState(null)
     // const [sortedInspectors, setSortedInspectors] = useState(null)
@@ -28,11 +30,17 @@ const InspectorInformation = ({inspectorsInfo}) => {
 //         }
 
 // console.log(Arr);
-
+   
+    
     const inspectorInfo = inspectorsInfo.map((inspector, index) => {
-
+        if (inspector.distance < searchDistance){
+ 
         return <li key={index}><span className="bold">Address: </span>{inspector.address} <span className="bold">Distance</span>{inspector.distance} miles away</li>
-    })
+        } 
+    } )
+
+    
+   
     
     return (
         <div className ="inspector-information">

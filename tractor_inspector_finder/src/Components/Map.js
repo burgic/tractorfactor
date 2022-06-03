@@ -17,7 +17,7 @@ export class MapComponent extends Component {
             markerDetails: null,
             isOpen:false,
             activeMarker:null,
-            searchDistance: 10.00
+            searchDistance: 30.00
             }
         };
     
@@ -155,7 +155,7 @@ export class MapComponent extends Component {
             </div>
             <div>
 
-                 <InspectorInformation inspectorsInfo={this.state.inspectorInfo}/>
+                 <InspectorInformation searchDistance = {this.state.searchDistance} inspectorsInfo={this.state.inspectorInfo}/>
             
             </div>
             </div>
