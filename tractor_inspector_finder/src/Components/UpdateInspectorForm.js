@@ -1,18 +1,180 @@
 import React from "react";
+import {useState, useEffect} from 'react';
+
 const UpdateInspectorForm = ({inspectorToUpdate}) => {
+
+    const [name, setName] = useState(inspectorToUpdate.name)
+    const [postcode, setPostcode] = useState(inspectorToUpdate.postcode)
+    const [address, setAddress] = useState(inspectorToUpdate.address)
+    const [phoneNumber, setPhoneNumber] = useState(inspectorToUpdate.phoneNumber)
+    const [email, setEmail] = useState(inspectorToUpdate.email)
+    const [tractorsArray, setTractorsArray] = useState([])
+    const [inspectorLocationData, setInspectorLocationData] = useState()
+    const [lat, setLat] = useState(null)
+    const [lng, setLng] = useState(null)
+    const [newInspector, setNewInspector] = useState(null)
+    const [tractorObjects, setTractorObjects] = useState(null)
+    const [tractorMap, setTractorMap] = useState(null)
+
+    const [updateWorked, setUpdateWorked] = useState(false)
+
+    // const handleSubmit = (evt) => {
+    //     evt.preventDefault()
+    //     console.log(evt.target.value)
+    // }
+
+    useEffect(() => {
+        getTractors()
+    }, [])
+
+    const getTractors = () => {
+        fetch('http://localhost:8080/tractors')
+        .then(res => res.json())
+        .then(data => setTractorObjects(data))
+    }
+
+    useEffect(() => {
+        if(tractorObjects !== null){
+            mapTractorManufacturers()
+        }
+    }, [tractorObjects])
+
+    const mapTractorManufacturers = () => {
+        const tractorMapping = tractorObjects.map((tractor, index) => {
+            if (tractor.id === inspectorToUpdate.tractors[0].id) {
+                tractorsArray.push([inspectorToUpdate.tractors[0].id])
+            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={handleCheckboxChange} key={tractor.id} type="checkbox" checked name={tractor.manufacturer} value={tractor.id}></input></>
+            } else{
+                return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={handleCheckboxChange} key={tractor.id} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
+
+            }
+        })
+        setTractorMap(tractorMapping)
+    }
+
+    let array=inspectorToUpdate.tractorIds;
+    const handleCheckboxChange = (evt) => {
+        if (array.length > 0){
+            for (let i=0; i< array[0].length; i++){
+                if (array[0][i] === parseInt(evt.target.value)){
+                    console.log(array[0])
+                    array[0].splice(i, 1)
+                    setTractorsArray([array])
+                } 
+            } array.push(parseInt(evt.target.value))
+            setTractorsArray([array])
+        }
+        else {
+                array.push(parseInt(evt.target.value))
+                setTractorsArray([array])
+            }
+           
+            }
+
+
+    const handleChange = (evt) => {
+        const state = evt.target.name
+        if (state === 'name'){
+            setName(evt.target.value)
+        } else if(state === 'postcode'){
+            setPostcode(evt.target.value)
+        } else if(state === 'address'){
+            setAddress(evt.target.value)
+        } else if(state === 'phoneNumber'){
+            setPhoneNumber(evt.target.value)
+        } else if (state ==='email'){
+            setEmail(evt.target.value)
+        } 
+    }
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log(evt.target.value)
+        fetch(`http://api.postcodes.io/postcodes/${postcode}`)
+        .then(res => res.json())
+        .then(data => setInspectorLocationData(data))
     }
+
+    useEffect(() => {
+        if(inspectorLocationData!= null){
+          setLat(inspectorLocationData.result.latitude)
+          setLng(inspectorLocationData.result.longitude)
+        }
+      }, [inspectorLocationData])
+
+
+
+
+    const addInspectorObject = () => {
+        setNewInspector( {
+            id: inspectorToUpdate.id,
+            name:name,
+            postcode:postcode,
+            address:address,
+            phoneNumber:phoneNumber,
+            email:email,
+            lat:lat,
+            lng:lng,
+            tractorIds:tractorsArray[0]
+        })
+    }
+    
+    useEffect(() => {
+        if (lat !== null && lng !== null){
+            addInspectorObject()
+        }
+    }, [lat, lng])
+
+ 
+
+
+    const updateInspectorInDb = () => {
+        if (newInspector !== null){
+        fetch(`http://localhost:8080/inspectors/${inspectorToUpdate.id}`,{
+            method:'PUT',
+            body: JSON.stringify(newInspector),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res=> {
+            if (res.ok) {
+                setUpdateWorked(true)
+                setTimeout(() => {
+                    setUpdateWorked(false);
+                }, 2000)
+            } 
+            throw new Error('shiiiit')
+        })
+        .catch((error) => {
+            console.log(error)
+            });
+        }
+    }
+
+    useEffect(() => {
+        if (newInspector !== null){
+            updateInspectorInDb()
+        }
+    }, [newInspector])
+
+    
 
 
     return (
         <>
             <h2>Update</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" value={inspectorToUpdate.name}></input>
+                <input onChange={handleChange} type="text" value={name} name="name" required></input>
+                <input onChange={handleChange} type="text" value={postcode} name="postcode" placeholder="postcode" required></input>
+            {/* <button>Get Co-ordinates</button> */}
+                <input onChange={handleChange} type="text" value={address} name="address" placeholder="address" required></input>
+                <input onChange={handleChange} type="text" value={phoneNumber} name="phoneNumber" placeholder="phone number" required></input>
+                <input onChange={handleChange} type="email" value={email} name="email" placeholder="email" required></input>
+                <fieldset>
+                    {tractorMap}
+                </fieldset>
                 <input type="submit" value="update"></input>
+            {updateWorked === true ? <h3>Update Successful</h3> : null}
 
             </form>
         </>
