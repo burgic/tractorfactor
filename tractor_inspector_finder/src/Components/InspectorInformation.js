@@ -4,9 +4,10 @@ import React, {useState, useEffect} from 'react';
 const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
     
     const inspectorInfo = inspectorsInfo.map((inspector, index) => {
+        
         if (inspector.distance < searchDistance){
- 
-        return <li key={index}><span className="bold">Address: </span>{inspector.address} <span className="bold">Distance</span>{inspector.distance} miles away</li>
+        let letter = String.fromCharCode("A".charCodeAt(0) + index)
+        return <li key={index}><span className="bold">{letter}:  </span><span className="bold">Address: </span>{inspector.address} <span className="bold">Distance</span>{inspector.distance} miles away</li>
         } 
     } )
     

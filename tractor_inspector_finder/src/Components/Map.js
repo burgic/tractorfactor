@@ -71,9 +71,9 @@ export class MapComponent extends Component {
     setMarkers = () => {
         const markerDeets = this.state.inspectorInfo.map((inspector, index) => {
             if(inspector.distance < this.state.searchDistance){
-            // this.setState({count: this.state.count+=1})
-            return   <Marker  key={index} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
-                    </Marker> 
+                let letter = String.fromCharCode("A".charCodeAt(0) + index)
+                return   <Marker  key={index} icon={"http://maps.google.com/mapfiles/marker" + letter + ".png"} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
+                        </Marker> 
                     
             }
         })
@@ -91,7 +91,6 @@ export class MapComponent extends Component {
     updateInspectorInfo = () => {
         let temp = [...this.state.inspectorInfo]
         for (let i=0; i<temp.length; i++){
-            //convert distance into miles and format here before saving it to object
             const distanceInMiles = (this.state.distanceResponse.rows[0].elements[i].distance.value/1600).toFixed(2);
             temp[i].distance = parseFloat(distanceInMiles)
         } 
@@ -152,10 +151,7 @@ export class MapComponent extends Component {
                 position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
                 visible={true}>
                     <div>
-                     
                             <h3>Info</h3>
-                    
-                        
                             <ul>
                                 <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
                                 <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
