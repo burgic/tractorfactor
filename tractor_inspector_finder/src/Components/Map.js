@@ -156,7 +156,7 @@ export class MapComponent extends Component {
                                 <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
                                 <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
                                 <li><span className="bold">Postcode: </span>{this.state.activeMarker.postcode}</li>
-                                <li><span className="bold">Distance: </span>{this.state.activeMarker.distance}</li>
+                                <li><span className="bold">Distance: </span>{this.state.activeMarker.distance} miles</li>
                                 <li><span className="bold">Phone: </span><a href={this.state.activeMarkerPhoneNumber}>{this.state.activeMarker.phoneNumber}</a></li>
                                 <li><span className="bold">Email: </span><a href={this.state.activeMarkerEmail}>{this.state.activeMarker.email}</a></li>
                             </ul>
