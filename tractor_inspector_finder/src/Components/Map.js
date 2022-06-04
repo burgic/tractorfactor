@@ -17,42 +17,13 @@ export class MapComponent extends Component {
             markerDetails: null,
             isOpen:false,
             activeMarker:null,
-            searchDistance: 30.00
+            searchDistance: 30.00,
+            count:0
             }
         };
     
     componentDidMount(){
         this.calculateDistance()
-    }
-
-    handleClickOpen = (evt) => {
-        this.setState({isOpen:true})
-        this.setState({activeMarker:this.state.inspectorInfo[evt.index]})
-        console.log(evt.index)
-    }
-
-    componentDidUpdate(prevProps, prevState){
-        if(this.state.distanceResponse !== prevState.distanceResponse){
-            this.updateInspectorInfo()
-        }
-        if(this.state.inspectorInfo !== prevState.inspectorInfo){
-            console.log("updated")
-            this.setMarkers()
-        }
-        if(this.state.searchDistance !== prevState.searchDistance){
-            this.setMarkers()
-        }
-    }
-
-    setMarkers = () => {
-        const markerDeets = this.state.inspectorInfo.map((inspector, index) => {
-            if(inspector.distance < this.state.searchDistance){
-            return   <Marker  key={index} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
-                    </Marker>
-            }
-                
-        })
-        this.setState({markerDetails: markerDeets})
     }
 
     calculateDistance = () => {
@@ -71,6 +42,47 @@ export class MapComponent extends Component {
             }
         )
     }
+
+    handleClickOpen = (evt) => {
+        this.setState({isOpen:true})
+        this.setState({activeMarker:this.state.inspectorInfo[evt.index]})
+        console.log(evt.index)
+    }
+
+
+    componentDidUpdate(prevProps, prevState){
+        if(this.state.distanceResponse !== prevState.distanceResponse){
+            this.updateInspectorInfo()
+        }
+        if(this.state.inspectorInfo !== prevState.inspectorInfo){
+            console.log("updated")
+            this.setMarkers()
+        }
+        if(this.state.searchDistance !== prevState.searchDistance){
+            this.setMarkers()
+        }
+    }
+
+    
+    setMarkers = () => {
+        const markerDeets = this.state.inspectorInfo.map((inspector, index) => {
+            if(inspector.distance < this.state.searchDistance){
+            // this.setState({count: this.state.count+=1})
+            return   <Marker  key={index} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
+                    </Marker> 
+                    
+            }
+        })
+        let total = markerDeets.length;
+        for (let i=0; i<markerDeets.length; i++){
+            if(markerDeets[i] === undefined){
+                total -=1
+            }
+        } this.setState({count: total})
+        this.setState({markerDetails: markerDeets})
+    }
+
+    
 
     updateInspectorInfo = () => {
         let temp = [...this.state.inspectorInfo]
@@ -106,7 +118,8 @@ export class MapComponent extends Component {
 
         return(
             <div className="map">
-            <h2>{this.state.searchDistance} miles</h2>
+            <h2>Found {this.state.count} inspectors within {this.state.searchDistance} miles</h2>
+            
             <div className="map-container">
             <button onClick={handleIncreaseClick}>Increase Search Radius</button>
             <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
