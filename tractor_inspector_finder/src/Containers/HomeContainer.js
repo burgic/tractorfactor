@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 const HomeContainer = () => {
 
     const [tractors, setTractors] = useState(null)
-    
     const [tractorLocationData, setTractorLocationData] = useState(null)
     const [tractorLatLong, setTractorLatLong] = useState(null)
     const [tractorLatLongRanges, setTractorLatLongRanges] = useState(null)
@@ -91,6 +90,27 @@ const HomeContainer = () => {
         }
     }, [tractorLatLongRanges])
 
+    useEffect(() => {
+        if(inspectorDestinations !== null){
+            if(inspectorDestinations.length !== 0){
+                getInspectorLatLong()}
+            else{
+                broadenSearch()
+            }
+        }
+    }, [inspectorDestinations])
+
+    const broadenSearch = () => {
+        console.log("broadening the search")
+        setTractorLatLongRanges({
+            minLat: tractorLatLongRanges.minLat-1.0,
+            maxLat: tractorLatLongRanges.maxLat+1.0,
+            minLng: tractorLatLongRanges.minLng-1.0,
+            maxLng: tractorLatLongRanges.maxLng+1.0
+        })
+        // .then(() => {fetchInspectors()})
+    }
+
     const fetchInspectors = () => {
         fetch(`http://localhost:8080/inspectors?manufacturer=${manufacturer}&minLat=${tractorLatLongRanges.minLat}&maxLat=${tractorLatLongRanges.maxLat}&minLng=${tractorLatLongRanges.minLng}&maxLng=${tractorLatLongRanges.maxLng}`)
         .then(res => {
@@ -105,12 +125,9 @@ const HomeContainer = () => {
         });
     }
     
-        const [inspectorLatLong, setInspectorLatLong] = useState(null)
+    const [inspectorLatLong, setInspectorLatLong] = useState(null)
 
-    useEffect(() => {
-        if(inspectorDestinations != null){
-        getInspectorLatLong()}
-    }, [inspectorDestinations])
+    
 
 
     const getInspectorLatLong = () => {
