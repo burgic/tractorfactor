@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import config from "../cofig";
 import InspectorInformation from "./InspectorInformation";
 import Tractor from '../static/tractor (3).png'
+import {Rating} from 'react-simple-star-rating';
 
 
 
@@ -151,8 +152,8 @@ export class MapComponent extends Component {
                 position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
                 visible={true}>
                     <div>
-                            <h3>Info</h3>
                             <ul>
+                                <li><span className="bold">Rating: <Rating readonly={true} size={15} ratingValue={this.state.activeMarker.rating} /></span></li>
                                 <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
                                 <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
                                 <li><span className="bold">Postcode: </span>{this.state.activeMarker.postcode}</li>
