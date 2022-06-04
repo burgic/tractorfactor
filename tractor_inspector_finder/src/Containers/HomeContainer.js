@@ -15,6 +15,7 @@ const HomeContainer = () => {
     const [manufacturer, setManufacturer] = useState(null)
     const [inspectorDestinations, setInspectorDestinations] = useState(null)    
     const [isError, setIsError] = useState(false)
+    const [resultsNotFound, setResultsNotFound] = useState(false)
 
     const getTractors = () => {
         fetch(`http://localhost:8080/tractors`)
@@ -102,12 +103,20 @@ const HomeContainer = () => {
 
     const broadenSearch = () => {
         console.log("broadening the search")
-        setTractorLatLongRanges({
-            minLat: tractorLatLongRanges.minLat-1.0,
-            maxLat: tractorLatLongRanges.maxLat+1.0,
-            minLng: tractorLatLongRanges.minLng-1.0,
-            maxLng: tractorLatLongRanges.maxLng+1.0
-        })
+        if(tractorLatLongRanges.minLat > tractorLocationData.result.latitude-5){
+            setTractorLatLongRanges({
+                minLat: tractorLatLongRanges.minLat-1.0,
+                maxLat: tractorLatLongRanges.maxLat+1.0,
+                minLng: tractorLatLongRanges.minLng-1.0,
+                maxLng: tractorLatLongRanges.maxLng+1.0
+            })
+        } else{
+            setResultsNotFound(true)
+            setTimeout(() => {
+                setResultsNotFound(false)
+            }, 2000)
+        }
+        
         // .then(() => {fetchInspectors()})
     }
 
@@ -146,6 +155,7 @@ const HomeContainer = () => {
 
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {isError === true ? <h3>No results found.  Please check your postcode.</h3> : null}
+            {resultsNotFound === true ? <h3>No inspectors found within range of this postcode</h3> : null}
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
 
 
