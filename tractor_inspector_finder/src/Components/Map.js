@@ -19,7 +19,8 @@ export class MapComponent extends Component {
             activeMarker:null,
             searchDistance: 30.00,
             count:0,
-            activeMarkerEmail: null
+            activeMarkerEmail: null,
+            activeMarkerPhoneNumber: null
             }
         };
     
@@ -48,6 +49,7 @@ export class MapComponent extends Component {
         this.setState({isOpen:true})
         this.setState({activeMarker:this.state.inspectorInfo[evt.index]})
         this.setState({activeMarkerEmail: `mailto: ${this.state.inspectorInfo[evt.index].email}`})
+        this.setState({activeMarkerPhoneNumber: `tel: ${this.state.inspectorInfo[evt.index].phoneNumber}`})
         console.log(evt.index)
     }
 
@@ -159,7 +161,7 @@ export class MapComponent extends Component {
                                 <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>
                                 <li><span className="bold">Postcode: </span>{this.state.activeMarker.postcode}</li>
                                 <li><span className="bold">Distance: </span>{this.state.activeMarker.distance}</li>
-                                <li><span className="bold">Phone: </span>{this.state.activeMarker.phoneNumber}</li>
+                                <li><span className="bold">Phone: </span><a href={this.state.activeMarkerPhoneNumber}>{this.state.activeMarker.phoneNumber}</a></li>
                                 <li><span className="bold">Email: </span><a href={this.state.activeMarkerEmail}>{this.state.activeMarker.email}</a></li>
                             </ul>
                        
