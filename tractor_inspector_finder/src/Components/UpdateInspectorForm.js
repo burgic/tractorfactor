@@ -68,7 +68,7 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
                 array.push(parseInt(evt.target.value))
                 setTractorsArray([array])
             }
-           
+            
             }
 
 
@@ -96,10 +96,10 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
 
     useEffect(() => {
         if(inspectorLocationData!= null){
-          setLat(inspectorLocationData.result.latitude)
-          setLng(inspectorLocationData.result.longitude)
+            setLat(inspectorLocationData.result.latitude)
+            setLng(inspectorLocationData.result.longitude)
         }
-      }, [inspectorLocationData])
+    }, [inspectorLocationData])
 
 
 
@@ -180,4 +180,5 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
         </>
     )
 }
+
 export default UpdateInspectorForm;
