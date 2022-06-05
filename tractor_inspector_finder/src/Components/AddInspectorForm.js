@@ -18,6 +18,27 @@ const AddInspectorForm = () => {
 
     const [updateWorked, setUpdateWorked] = useState(false)
 
+    const [checkedState, setCheckedState] = useState(null)
+
+    
+    
+        
+    
+
+    const handleCheckboxChange = (position) => {
+        console.log(position)
+        const updatedCheckedState = checkedState.map((item, index) => {
+            if (index === position) {
+              return !item;
+            } else {
+              return item;
+            }
+          });
+    
+        setCheckedState(updatedCheckedState);
+    }
+    
+
     useEffect(() => {
         getTractors()
     }, [])
@@ -29,38 +50,70 @@ const AddInspectorForm = () => {
     }
 
     useEffect(() => {
-        if(tractorObjects !== null){
-            mapTractorManufacturers()
+        if(tractorObjects !== null ){
+            setCheckedState(new Array(tractorObjects.length).fill(false))
         }
     }, [tractorObjects])
 
+    useEffect(() => {
+        if (checkedState !== null){
+            mapTractorManufacturers()
+        }
+    }, [checkedState])
+
     const mapTractorManufacturers = () => {
         const tractorMapping = tractorObjects.map((tractor, index) => {
-            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={handleCheckboxChange} key={tractor.id} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
+            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
         })
         setTractorMap(tractorMapping)
     }
-    
-    let array=[];
-    const handleCheckboxChange = (evt) => {
-        
-        if (array.length > 0){
-            for (let i=0; i< array[0].length; i++){
-                if (array[0][i] === parseInt(evt.target.value)){
-                    console.log(array[0])
-                    array[0].splice(i, 1)
-                    setTractorsArray([array])
-                } 
-            } array.push(parseInt(evt.target.value))
-            setTractorsArray([array])
-        }
-        else {
-                array.push(parseInt(evt.target.value))
-                setTractorsArray([array])
-            }
-            
-            }
 
+    useEffect(() => {
+        if (checkedState!== null){
+            setTractorIDArray()
+        }
+    }, [checkedState])
+
+    const setTractorIDArray = () =>{
+        let temp = []
+        for (let i=0; i<checkedState.length; i++){
+            if (checkedState[i] === true){
+                temp.push(tractorObjects[i].id)
+            }
+        } setTractorsArray(temp)
+    }
+    
+    // let array=[];
+    // const handleCheckboxChange = (evt) => {
+        
+    //     if (array.length > 0){
+    //         for (let i=0; i< array[0].length; i++){
+    //             if (array[0][i] === parseInt(evt.target.value)){
+    //                 array[0].splice(i, 1)
+    //                 setTractorsArray([array])
+    //             } 
+    //         } array.push(parseInt(evt.target.value))
+    //         setTractorsArray([array])
+    //     }
+    //     else {
+    //             array.push(parseInt(evt.target.value))
+    //             setTractorsArray([array])
+    //         }
+    //         }
+
+       
+        
+        
+
+        
+        
+            
+    
+        
+       
+
+
+    
 
     const handleChange = (evt) => {
         const state = evt.target.name
@@ -103,7 +156,7 @@ const AddInspectorForm = () => {
             email:email,
             lat:lat,
             lng:lng,
-            tractorIds:tractorsArray[0]
+            tractorIds:tractorsArray
         })
     }
     
@@ -159,11 +212,10 @@ const AddInspectorForm = () => {
             <input onChange={handleChange} type="text" name="address" placeholder="address" required></input>
             <input onChange={handleChange} type="text" name="phoneNumber" placeholder="phone number" required></input>
             <input onChange={handleChange} type="email" name="email" placeholder="email" required></input>
-            <br></br>
             <fieldset>
                 {tractorMap}
             </fieldset>
-            <br></br>
+            
             <input type="submit" value="Add Inspector"></input>
         </form>
         { updateWorked === true ? <h3>Update successful</h3> : null }
