@@ -52,9 +52,8 @@ public class InspectorController {
                 inspector.getEmail(),
                 inspector.getLat(),
                 inspector.getLng()
-
         );
-
+                inspector.setRating(0);
         for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
             int id = (int)inspector.getTractorIds().get(i);
             inspectorToAdd.addTractorId(id);
@@ -73,6 +72,7 @@ public class InspectorController {
 
     @PutMapping(value = "inspectors/{id}")
     public ResponseEntity<Inspector> putInspector(@RequestBody Inspector inspector, @PathVariable Long id){
+        System.out.println(inspector.getRating());
         Inspector inspectorToUpdate = inspectorRepository.findById(id).get();
         inspectorToUpdate.setName(inspector.getName());
         inspectorToUpdate.setPostcode((inspector.getPostcode()));
@@ -80,7 +80,9 @@ public class InspectorController {
         inspectorToUpdate.setPhoneNumber(inspector.getPhoneNumber());
         inspectorToUpdate.setLat(inspector.getLat());
         inspectorToUpdate.setLng(inspector.getLng());
+        inspectorToUpdate.setRating(inspector.getRating());
         inspectorRepository.save(inspectorToUpdate);
+
         for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
             int id2 = (int) inspector.getTractorIds().get(i);
             inspectorToUpdate.addTractorId(id2);
