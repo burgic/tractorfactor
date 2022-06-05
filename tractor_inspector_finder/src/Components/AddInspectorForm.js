@@ -83,36 +83,6 @@ const AddInspectorForm = () => {
         } setTractorsArray(temp)
     }
     
-    // let array=[];
-    // const handleCheckboxChange = (evt) => {
-        
-    //     if (array.length > 0){
-    //         for (let i=0; i< array[0].length; i++){
-    //             if (array[0][i] === parseInt(evt.target.value)){
-    //                 array[0].splice(i, 1)
-    //                 setTractorsArray([array])
-    //             } 
-    //         } array.push(parseInt(evt.target.value))
-    //         setTractorsArray([array])
-    //     }
-    //     else {
-    //             array.push(parseInt(evt.target.value))
-    //             setTractorsArray([array])
-    //         }
-    //         }
-
-       
-        
-        
-
-        
-        
-            
-    
-        
-       
-
-
     
 
     const handleChange = (evt) => {

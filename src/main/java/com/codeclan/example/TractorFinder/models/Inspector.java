@@ -41,7 +41,7 @@ public class Inspector {
     private int rating;
 
     @Column(name="tractor_ids")
-    private ArrayList tractorIds;
+    private ArrayList<Integer> tractorIds;
 
     @JsonIgnoreProperties({"inspectors"})
     @ManyToMany
@@ -153,15 +153,15 @@ public class Inspector {
         this.tractors.add(tractor);
     }
 
-    public ArrayList getTractorIds() {
+    public List<Integer> getTractorIds() {
         return tractorIds;
     }
 
     public void addTractorId(Integer tractorId){this.tractorIds.add(tractorId);}
 
-    public void setTractorIds(ArrayList tractorIds) {
-        this.tractorIds = tractorIds;
-    }
+//    public void setTractorIds(ArrayList tractorIds) {
+//        this.tractorIds = tractorIds;
+//    }
 
     public int getNumberOfTractorIds(){
         return this.tractorIds.size();

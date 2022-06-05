@@ -83,11 +83,19 @@ public class InspectorController {
         inspectorToUpdate.setRating(inspector.getRating());
         inspectorRepository.save(inspectorToUpdate);
 
+        System.out.println(inspector.getNumberOfTractorIds());
         for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
             int id2 = (int) inspector.getTractorIds().get(i);
-            inspectorToUpdate.addTractorId(id2);
-            Tractor tractor = tractorRepository.findById((long) id2).get();
-            inspectorToUpdate.addTractor(tractor);
+            for (int j=0; j<inspectorToUpdate.getNumberOfTractorIds(); j++){
+                if (id2 != inspectorToUpdate.getTractorIds().get(j)){
+                    inspectorToUpdate.addTractorId(id2);
+                    Tractor tractor = tractorRepository.findById((long) id2).get();
+                    inspectorToUpdate.addTractor(tractor);
+                }
+            }
+            System.out.println(inspectorToUpdate.getTractorIds());
+
+            System.out.println(inspectorToUpdate.getTractors());
         }
         return new ResponseEntity<>(inspectorToUpdate, HttpStatus.OK);
     }
