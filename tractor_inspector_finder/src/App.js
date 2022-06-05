@@ -3,6 +3,7 @@ import AdminContainer from './Containers/AdminContainer';
 import AppContainer from './Containers/AppContainer';
 import HomeContainer from './Containers/HomeContainer';
 import React from 'react';
+import './App.css';
 
 
 
