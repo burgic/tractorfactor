@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import TractorLocationForm from '../Components/TractorLocationForm';
 import MapComponent from '../Components/Map';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 
 const HomeContainer = () => {
