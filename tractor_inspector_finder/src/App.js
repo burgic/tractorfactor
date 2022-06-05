@@ -4,14 +4,19 @@ import AppContainer from './Containers/AppContainer';
 import HomeContainer from './Containers/HomeContainer';
 import React from 'react';
 import './App.css';
+import styled from 'styled-components';
 
 
+const Title = styled.h1`
+  text-align: center;
+  font-size:5em;
+  padding: 1em;`
 
 function App() {
 
   return (
     <div className="App">
-      <h1>Find me an inspector</h1>
+      
       <BrowserRouter>
 
       <Routes>

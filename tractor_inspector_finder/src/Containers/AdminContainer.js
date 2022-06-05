@@ -8,9 +8,7 @@ import InspectorSearchForm from '../Components/InspectorSearchForm';
 const AdminContainer = () => {
 
     return (
-        <div>
-
-            <h1>Admin</h1>
+        <div className="AdminContainer">
 
             <h2>Add New Inspector</h2>
             <AddInspectorForm />

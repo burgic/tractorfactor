@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import TractorLocationForm from '../Components/TractorLocationForm';
 import MapComponent from '../Components/Map';
-import Button from '@mui/material/Button';
+import styled from 'styled-components';
 
 
 const HomeContainer = () => {
@@ -150,8 +150,13 @@ const HomeContainer = () => {
 
 
     return (
+
+        
+        
     
         <div className="home-container">
+
+            <h1>Search For An Inspector</h1>
 
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {isError === true ? <h3>No results found.  Please check your postcode.</h3> : null}

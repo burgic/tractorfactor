@@ -46,9 +46,8 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
                 <label htmlFor="postcode">Postcode: </label> 
                 <input onChange={handlePostcodeChange} type="text" name="postcode" />
                 <input type="submit" value="Search" />
-               
+
             </form>
-        
             
         </>
     )

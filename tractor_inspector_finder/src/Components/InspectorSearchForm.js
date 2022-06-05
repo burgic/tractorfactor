@@ -48,7 +48,7 @@ const InspectorSearchForm = () => {
             return <tr><td>{result.name}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
             
         })
-         setSearchResultsMap(mappedResults)
+        setSearchResultsMap(mappedResults)
     }
 
     const handleUpdateButtonClick = (evt) => {

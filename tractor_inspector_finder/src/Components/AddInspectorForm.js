@@ -58,18 +58,9 @@ const AddInspectorForm = () => {
                 array.push(parseInt(evt.target.value))
                 setTractorsArray([array])
             }
-           
+            
             }
 
-        
-        
-            
-    
-        
-       
-
-
-    
 
     const handleChange = (evt) => {
         const state = evt.target.name
@@ -168,10 +159,11 @@ const AddInspectorForm = () => {
             <input onChange={handleChange} type="text" name="address" placeholder="address" required></input>
             <input onChange={handleChange} type="text" name="phoneNumber" placeholder="phone number" required></input>
             <input onChange={handleChange} type="email" name="email" placeholder="email" required></input>
+            <br></br>
             <fieldset>
                 {tractorMap}
             </fieldset>
-            
+            <br></br>
             <input type="submit" value="Add Inspector"></input>
         </form>
         { updateWorked === true ? <h3>Update successful</h3> : null }

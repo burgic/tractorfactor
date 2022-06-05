@@ -1,11 +1,24 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-container{
   position:relative;
   /* display:flex;
   justify-content:center; */
+}
+
+.admin-container{
+  text-align: center;
+
+}
+
+footer {
+  padding: 10px;
+  background-color: aquamarine;
 }
 
 .map{
