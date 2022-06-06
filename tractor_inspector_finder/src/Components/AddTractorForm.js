@@ -31,6 +31,7 @@ const AddTractorForm = () => {
         .then(res=> {
             if (res.ok) {
                 setAddWorked(true)
+                setManufacturer("")
                 setTimeout(() => {
                     setAddWorked(false);
                 }, 2000)
@@ -45,7 +46,7 @@ const AddTractorForm = () => {
     return(
         <form className="add-tractor-form" onSubmit={handleSubmit}>
             <h3>Add Tractor</h3>
-            <input onChange={handleChange} type="text" name="manufacturer" placeholder="manufacturer" required></input>
+            <input onChange={handleChange} type="text" name="manufacturer" value={manufacturer} placeholder="manufacturer" required></input>
             <input className="button" type="submit" value="add tractor"></input>
             { addWorked === true ? <h3>Successfully added!</h3> : null}
 
