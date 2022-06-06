@@ -156,8 +156,6 @@ const HomeContainer = () => {
     
         <div className="home-container">
 
-            <h1>Search For An Inspector</h1>
-
             <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
             {isError === true ? <h3>No results found.  Please check your postcode.</h3> : null}
             {resultsNotFound === true ? <h3>No inspectors found within range of this postcode</h3> : null}
