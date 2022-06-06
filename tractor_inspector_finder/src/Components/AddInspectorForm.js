@@ -181,6 +181,12 @@ const AddInspectorForm = () => {
         .then(res=> {
             if (res.ok) {
                 setUpdateWorked(true)
+                setName("")
+                setPostcode("")
+                setAddress("")
+                setPhoneNumber("")
+                setEmail("")
+                setInspectorLocationData(null)
                 setTimeout(() => {
                     setUpdateWorked(false);
                 }, 2000)
@@ -207,13 +213,13 @@ const AddInspectorForm = () => {
         <>
         <form className="add-inspector-form" onSubmit={handleSubmit}>
             <h3>Add Inspector</h3>
-            <input onChange={handleChange} type="text"  name="name" placeholder="name" required></input>
-            <input onChange={handleChange} type="text"  name="postcode" placeholder="postcode" required></input>
+            <input onChange={handleChange} type="text"  value={name} name="name" placeholder="name" required></input>
+            <input onChange={handleChange} type="text"  value={postcode} name="postcode" placeholder="postcode" required></input>
             {/* <button>Get Co-ordinates</button> */}
             
-            <input onChange={handleChange} type="text" name="address" placeholder="address" required></input>
-            <input onChange={handleChange} type="text" name="phoneNumber" placeholder="phone number" required></input>
-            <input onChange={handleChange} type="email" name="email" placeholder="email" required></input>
+            <input onChange={handleChange} type="text" value={address} name="address" placeholder="address" required></input>
+            <input onChange={handleChange} type="text" value={phoneNumber} name="phoneNumber" placeholder="phone number" required></input>
+            <input onChange={handleChange} type="email" value={email} name="email" placeholder="email" required></input>
             <br></br>
             <br></br>
             <fieldset>
