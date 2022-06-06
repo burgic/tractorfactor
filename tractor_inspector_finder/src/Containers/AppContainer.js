@@ -12,17 +12,25 @@ const AppContainer = () => {
         setIsLanding(!isLanding)
     }
 
+    const handleLandingFalseClick = () => {
+        setIsLanding(false)
+    }
+
+    const handleLandingTrueClick = () => {
+        setIsLanding(true)
+    }
+
     return (
         <>
         
 
         <div className="nav-bar">
 
-            <h1>TractorFactor</h1>
+            <Link to="/"><h1 onClick={handleLandingTrueClick}>TractorFactor</h1></Link>
             <nav>
 
-                <Link to="/"> Home</Link>
-                <Link to="admin"> Admin     </Link>
+                <Link to="/" onClick={handleLandingFalseClick}> Home</Link>
+                <Link to="admin" onClick={handleLandingFalseClick}> Admin</Link>
 
             </nav>
         

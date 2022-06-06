@@ -190,10 +190,15 @@ a {
 .admin-form-container{
   display:flex;
   justify-content:center;
+  flex-direction:column;
+  align-items:center;
 }
 
 .add-inspector-form{
-  width:70%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:50%;
 }
 
 .add-inspector-form > input{
