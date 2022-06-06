@@ -81,7 +81,10 @@ public class InspectorController {
         inspectorToUpdate.setLat(inspector.getLat());
         inspectorToUpdate.setLng(inspector.getLng());
         inspectorToUpdate.setRating(inspector.getRating());
-        inspectorRepository.save(inspectorToUpdate);
+
+        inspectorToUpdate.clearTractorIds();
+        inspectorToUpdate.clearTractorsList();
+        System.out.println(inspector.getNumberOfTractorIds());
 
         for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
             int id2 = (int) inspector.getTractorIds().get(i);
@@ -89,6 +92,10 @@ public class InspectorController {
             Tractor tractor = tractorRepository.findById((long) id2).get();
             inspectorToUpdate.addTractor(tractor);
         }
+        inspectorRepository.save(inspectorToUpdate);
+        System.out.println(inspectorToUpdate.getTractorIds());
+        System.out.println(inspectorToUpdate.getTractors());
         return new ResponseEntity<>(inspectorToUpdate, HttpStatus.OK);
     }
+    
 }

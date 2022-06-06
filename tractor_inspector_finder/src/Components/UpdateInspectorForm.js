@@ -8,15 +8,15 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
     const [address, setAddress] = useState(inspectorToUpdate.address)
     const [phoneNumber, setPhoneNumber] = useState(inspectorToUpdate.phoneNumber)
     const [email, setEmail] = useState(inspectorToUpdate.email)
-    const [tractorsArray, setTractorsArray] = useState([])
+    const [tractorsArray, setTractorsArray] = useState(inspectorToUpdate.tractorIds)
     const [inspectorLocationData, setInspectorLocationData] = useState()
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
     const [newInspector, setNewInspector] = useState(null)
     const [tractorObjects, setTractorObjects] = useState(null)
     const [tractorMap, setTractorMap] = useState(null)
-
     const [updateWorked, setUpdateWorked] = useState(false)
+    const [checkedState, setCheckedState] = useState(null)
 
     // const handleSubmit = (evt) => {
     //     evt.preventDefault()
@@ -34,42 +34,89 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
     }
 
     useEffect(() => {
-        if(tractorObjects !== null){
-            mapTractorManufacturers()
+        if(tractorObjects !== null ){
+            updateCheckedState()
         }
+        
     }, [tractorObjects])
 
-    const mapTractorManufacturers = () => {
-        const tractorMapping = tractorObjects.map((tractor, index) => {
-            if (tractor.id === inspectorToUpdate.tractors[0].id) {
-                tractorsArray.push([inspectorToUpdate.tractors[0].id])
-            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={handleCheckboxChange} key={tractor.id} type="checkbox" checked name={tractor.manufacturer} value={tractor.id}></input></>
-            } else{
-                return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={handleCheckboxChange} key={tractor.id} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
+    const updateCheckedState = () => {
+        let temp = new Array(tractorObjects.length).fill(false)
+        if (inspectorToUpdate.tractorIds.length > 0){
+            for (let i=0; i<inspectorToUpdate.tractorIds.length; i++){
+                let index = inspectorToUpdate.tractorIds[i]-1;
+                temp[index] = true
+        }
+        setCheckedState(temp)
+        } 
+    }
 
+    useEffect(() => {
+        if (checkedState !== null){
+            mapTractorManufacturers()
+        }
+    }, [checkedState])
+
+    const mapTractorManufacturers = () => {
+        
+        const tractorMapping = tractorObjects.map((tractor, index) => {
+            if (tractor.id === inspectorToUpdate.tractorIds[0]) {
+                return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
+                // <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={handleCheckboxChange} key={tractor.id} type="checkbox" checked name={tractor.manufacturer} value={tractor.id}></input></>
+            } else{
+                return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} key={tractor.id} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
             }
         })
+        
         setTractorMap(tractorMapping)
     }
 
-    let array=inspectorToUpdate.tractorIds;
-    const handleCheckboxChange = (evt) => {
-        if (array.length > 0){
-            for (let i=0; i< array[0].length; i++){
-                if (array[0][i] === parseInt(evt.target.value)){
-                    console.log(array[0])
-                    array[0].splice(i, 1)
-                    setTractorsArray([array])
-                } 
-            } array.push(parseInt(evt.target.value))
-            setTractorsArray([array])
+    useEffect(() => {
+        if (checkedState!== null){
+            setTractorIDArray()
         }
-        else {
-                array.push(parseInt(evt.target.value))
-                setTractorsArray([array])
+    }, [checkedState])
+
+    const setTractorIDArray = () =>{
+        let temp = []
+        for (let i=0; i<checkedState.length; i++){
+            if (checkedState[i] === true){
+                temp.push(tractorObjects[i].id)
             }
-            
+        } setTractorsArray(temp)
+    }
+
+    const handleCheckboxChange = (position) => {
+        console.log(position)
+        const updatedCheckedState = checkedState.map((item, index) => {
+            if (index === position) {
+              return !item;
+            } else {
+              return item;
             }
+          });
+    
+        setCheckedState(updatedCheckedState);
+    }
+
+    // let array=inspectorToUpdate.tractorIds;
+    // const handleCheckboxChange = (evt) => {
+    //     if (array.length > 0){
+    //         for (let i=0; i< array[0].length; i++){
+    //             if (array[0][i] === parseInt(evt.target.value)){
+    //                 console.log(array[0])
+    //                 array[0].splice(i, 1)
+    //                 setTractorsArray([array])
+    //             } 
+    //         } array.push(parseInt(evt.target.value))
+    //         setTractorsArray([array])
+    //     }
+    //     else {
+    //             array.push(parseInt(evt.target.value))
+    //             setTractorsArray([array])
+    //         }
+           
+    //         }
 
 
     const handleChange = (evt) => {
@@ -96,10 +143,10 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
 
     useEffect(() => {
         if(inspectorLocationData!= null){
-            setLat(inspectorLocationData.result.latitude)
-            setLng(inspectorLocationData.result.longitude)
+          setLat(inspectorLocationData.result.latitude)
+          setLng(inspectorLocationData.result.longitude)
         }
-    }, [inspectorLocationData])
+      }, [inspectorLocationData])
 
 
 
@@ -114,7 +161,7 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
             email:email,
             lat:lat,
             lng:lng,
-            tractorIds:tractorsArray[0]
+            tractorIds:tractorsArray
         })
     }
     
@@ -180,5 +227,4 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
         </>
     )
 }
-
 export default UpdateInspectorForm;
