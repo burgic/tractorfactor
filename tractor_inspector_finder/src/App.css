@@ -1,9 +1,6 @@
 .App {
   text-align: center;
   color: rgb(5, 44, 11);
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 } 
 
 .button{
@@ -13,11 +10,11 @@
   background-color: white;
 }
 
-
 .button:hover{
   background-color:rgb(5, 44, 11);
   color:white;
   cursor:pointer;
+  font-weight:bold;
 }
 
 .nav-bar{
@@ -52,10 +49,43 @@
 
 .home-container{
   position:relative;
-  /* display:flex;
-  justify-content:center; */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
+.home-form{
+  text-align:left;
+  width:50%;
+  background-color:azure;
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+}
+
+.home-form > label{
+  font-weight:bold;
+}
+
+.home-form > .button{
+  margin-top:1rem;
+  margin-left:40%;
+}
+
+.home-form-input{
+  width:9rem;
+  float:right;
+  margin:0.5rem 0.25rem 0.5rem 0.25rem;
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
 
 .admin-container{
   text-align: center;
