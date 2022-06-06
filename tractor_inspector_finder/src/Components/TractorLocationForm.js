@@ -16,7 +16,7 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
 
     const mapTractors = () => {
         const mappTractors = tractors.map((tractor) => {
-            return <option  key={tractor.id} value={tractor.manufacturer}>{tractor.manufacturer}</option>
+            return <option className="home-form-input"  key={tractor.id} value={tractor.manufacturer}>{tractor.manufacturer}</option>
         })
         setMappedTractors(mappTractors)
     }
@@ -38,6 +38,7 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
 
     return (
         <>
+
             <h2>Search For An Inspector</h2>
 
             <form className="home-form" onSubmit={handleSubmit}>

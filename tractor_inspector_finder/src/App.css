@@ -21,13 +21,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left:1rem;
+  padding-left:3rem;
   padding-right:1rem;
+}
+
+hr{
+  margin:0;
+  border-color:green;
+}
+
+footer {
+  padding: 10px;
+  background-color: white;
+  text-align:right;
+  padding-right:2rem;
 }
 
 .landing-page{
   width:100%;
-  height:90vh;
+  height:75vh;
   background-image:url("./static/tractor_big.jpg");
   background-size:100% 100%;
   background-repeat: no-repeat;
@@ -48,18 +60,21 @@
 }
 
 .home-container{
+  padding-top:2rem;
+  padding-bottom:2rem;
   position:relative;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  /* justify-content:center; */
   align-items:center;
+  min-height:63vh;
 }
 
 .home-form{
-  
   width:25%;
-  background-color:azure;
-  border:1px solid black;
+  background-color:rgb(234, 246, 236);
+  color:rgb(5, 44, 11);
+  border:2px solid green;
   border-radius:5px;
   padding:1rem;
 }
@@ -69,30 +84,32 @@
 }
 
 .home-form > .button{
-  margin-top:1rem;
+  margin-top:0.5rem;
   
 }
 
 .home-form-input{
-  width:9rem;
+  width:50%;
   /* float:right; */
   margin:0.5rem 0.25rem 0.5rem 0.25rem;
-  padding:0.5rem;
+  padding:0.5rem 0 0.5rem 0;
+  text-align:center;
 }
 
-/* .left{
-  float:left;
+a{
+  padding-right:2rem;
+  font-weight:normal;
+  font-size:1rem;}
+
+a:hover{
+  color:blue;
+  font-weight:bold;
 }
 
-.right{
-  float:right;
-} */
-
-
-footer {
-  padding: 10px;
-  background-color: aquamarine;
+a:visited{
+  color:rgb(5, 44, 11);
 }
+
 
 .map{
   height:auto;
@@ -101,6 +118,10 @@ footer {
   flex-direction:column;
   align-items:center;
   justify-content:center;
+}
+
+.map-info{
+  display:flex;
 }
 
 .button-container{
@@ -128,17 +149,32 @@ footer {
   font-weight:bold;
 }
 
-ul{
+.info-window-list{
   list-style:none;
+  text-align:left;
 }
+
+.info-window-list > li > a{
+  font-size:0.75rem;
+  text-align:left;
+}
+
+
 
 .inspector-information{
   position:relative;
+  width:90%;
+  margin-bottom:1rem;
+  display:flex;
+  justify-content:center;
   
 }
 
 .inspector-table{
-  margin-top:1rem;
+  margin-top:2rem;
+  width:100%;
+  table-layout: auto;
+  
 }
 
 .inspector-table > tr > th{
@@ -157,26 +193,37 @@ th, td, table {
   margin: 0px;
 }
 
+td{
+  padding:0.5rem 0.25rem 0.5rem 0.25rem;
+  word-wrap: normal;
+}
+
+ td > a{
+  font-size:0.65rem;
+  text-align:left;
+}
+
 a {
   text-decoration: none;
-  font-weight:bold;
+  font-weight:normal;
 }
 
 .admin-container{
-  text-align: center;
-  display: flex;
-  height:100vh;
+  padding-top:2rem;
+  min-height:63vh;
+  padding-bottom:2rem;
 }
 
 .admin-card-container{
   display:flex;
   justify-content:space-evenly;
-  height:50vh;
+  height:30vh;
   align-items:center;
+  color:rgb(5, 44, 11)
 }
 
 .admin-card{
-  border:2px black solid;
+  border:2px green solid;
   border-radius:10px;
   padding:2rem;
 }
@@ -185,6 +232,7 @@ a {
   cursor:pointer;
   background-color:rgb(5, 44, 11);
   color:white;
+  border:2px white solid;
 }
 
 .admin-form-container{
@@ -199,20 +247,56 @@ a {
   flex-direction:column;
   align-items:center;
   width:50%;
+  background-color:rgb(234, 246, 236);
+  color:rgb(5, 44, 11);
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+  border:2px solid green;
 }
 
 .add-inspector-form > input{
   padding:0.5rem;
-  margin-left:0.25rem;
+  margin:0.5rem;
+}
+
+.add-tractor-form{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:25%;
+  background-color:rgb(234, 246, 236);
+  color:rgb(5, 44, 11);
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+  border:2px solid green;
 }
 
 .add-tractor-form > input{
   padding:0.5rem;
-  margin-left:0.25rem;
+  margin:0.5rem;
 }
 
 .inspector-search-form > input{
   padding:0.5rem;
-
+  margin:0.5rem;
 }
 
+.inspector-search-form{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:25%;
+  background-color:rgb(234, 246, 236);
+  color:rgb(5, 44, 11);
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+  border:2px solid green;border:2px solid green;
+  margin-bottom:1rem;
+}
+
+tr:hover{
+  background-color:rgb(234, 246, 236);
+}
