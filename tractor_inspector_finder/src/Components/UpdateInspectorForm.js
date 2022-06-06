@@ -1,7 +1,7 @@
 import React from "react";
 import {useState, useEffect} from 'react';
 
-const UpdateInspectorForm = ({inspectorToUpdate}) => {
+const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
 
     const [name, setName] = useState(inspectorToUpdate.name)
     const [postcode, setPostcode] = useState(inspectorToUpdate.postcode)
@@ -186,9 +186,13 @@ const UpdateInspectorForm = ({inspectorToUpdate}) => {
         .then(res=> {
             if (res.ok) {
                 setUpdateWorked(true)
+                
                 setTimeout(() => {
                     setUpdateWorked(false);
                 }, 2000)
+                setTimeout(() => {
+                    handleUpdateSubmit();
+                }, 2500)
             } 
             throw new Error('shiiiit')
         })
