@@ -24,13 +24,11 @@ const InspectorsList = () => {
     const mapResults = () => {
         const mappedResults = searchResults.map((result, index) => {
             return <tr><td>{result.name.toUpperCase()}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button  value={result.id}>Update</button><button  value={result.id}>Delete</button></tr>
-            
         })
         setSearchResultsMap(mappedResults)
     }
 
     return(
-
         <>
         <h3>All Inspectors</h3>
         {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
