@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 @Component
@@ -58,7 +59,7 @@ public class DataLoader implements ApplicationRunner {
 //        inspectorRepository.save(inspector3);
 
         ReadCSV readCSV = new ReadCSV();
-        Scanner sc = new Scanner(new File("/Users/user/codeclan_work/project_3/tractorfactor/McCormickTest.csv"));
+        Scanner sc = new Scanner(new File("/Users/christianburgin/codeclan_work/week_15/McCormickTest.csv"));
         sc.useDelimiter(",");
         List<List<String>> Info = new ArrayList<>();
         while (sc.hasNext()) {
@@ -67,7 +68,7 @@ public class DataLoader implements ApplicationRunner {
         System.out.println(Info);
 
         for (int i = 1; i < Info.size(); i++) {
-            Inspector inspector = new Inspector(Info.get(i).get(0),
+            Inspector inspector = new Inspector(Info.get(i).get(0).toLowerCase(Locale.ROOT),
                     Info.get(i).get(1),
                     Info.get(i).get(2),
                     Info.get(i).get(3),
@@ -81,7 +82,7 @@ public class DataLoader implements ApplicationRunner {
             }
 
         ReadCSV readCSV2 = new ReadCSV();
-        Scanner sc2 = new Scanner(new File("/Users/user/codeclan_work/project_3/tractorfactor/UKClaas.csv"));
+        Scanner sc2 = new Scanner(new File("/Users/christianburgin/codeclan_work/week_15/UKClaas.csv"));
         sc2.useDelimiter(",");
         List<List<String>> Info2 = new ArrayList<>();
         while (sc2.hasNext()) {
