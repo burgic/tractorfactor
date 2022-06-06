@@ -22,24 +22,20 @@ const AppContainer = () => {
 
     return (
         <>
-        
-
-        <div className="nav-bar">
-
-            <Link to="/"><h1 onClick={handleLandingTrueClick}>TractorFactor</h1></Link>
+        <header className="nav-bar">
+            <Link to="/" activeStyle={{color: "red",textDecoration:"none"}}><h1 onClick={handleLandingTrueClick}>TractorFactor</h1></Link>
             <nav>
-
-                <Link to="/" onClick={handleLandingFalseClick}> Home</Link>
+                <Link to="/" onClick={handleLandingFalseClick} activeStyle={{color: "red",textDecoration:"none"}}> Home</Link>
                 <Link to="admin" onClick={handleLandingFalseClick}> Admin</Link>
-
             </nav>
-        
-        </div>
+        </header>
 
         {isLanding ? <Landing handleLandingClick={handleLandingClick} /> :<Outlet />}
             
-            
-
+        
+        <footer className="footer">
+            <h5>ooR Industries &copy;</h5>
+        </footer>
         </>
     )
 }

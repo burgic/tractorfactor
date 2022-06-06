@@ -42,7 +42,7 @@ const AdminContainer = () => {
     }
 
     return (
-        <div className="admin-Container">
+        <div className="admin-container">
             <div className="admin-card-container">
                 <div className="admin-card" onClick={handleInspectorClick}><h2>Add New Inspector</h2></div>
                 <div className="admin-card" onClick={handleTractorClick}><h2>Add New Tractor</h2></div>

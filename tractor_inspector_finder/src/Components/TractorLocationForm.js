@@ -38,6 +38,7 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
 
     return (
         <>
+        
             <h2>Search For An Inspector</h2>
 
             <form className="home-form" onSubmit={handleSubmit}>
