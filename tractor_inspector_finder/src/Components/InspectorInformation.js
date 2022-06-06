@@ -22,7 +22,7 @@ const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
             {/* <h2>Inspector Information</h2> */}
             <table className="inspector-table">
             <tr>
-                <th>Number</th>
+                <th></th>
                 <th>Name</th>
                 <th>Address: </th> 
                 <th>Distance: </th> 

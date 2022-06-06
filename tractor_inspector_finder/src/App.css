@@ -103,7 +103,7 @@ a{
 
 a:hover{
   color:blue;
-  font-weight:normal;
+  font-weight:bold;
 }
 
 a:visited{
@@ -118,6 +118,10 @@ a:visited{
   flex-direction:column;
   align-items:center;
   justify-content:center;
+}
+
+.map-info{
+  display:flex;
 }
 
 .button-container{
@@ -145,17 +149,32 @@ a:visited{
   font-weight:bold;
 }
 
-ul{
+.info-window-list{
   list-style:none;
+  text-align:left;
 }
+
+.info-window-list > li > a{
+  font-size:0.75rem;
+  text-align:left;
+}
+
+
 
 .inspector-information{
   position:relative;
+  width:90%;
+  margin-bottom:1rem;
+  display:flex;
+  justify-content:center;
   
 }
 
 .inspector-table{
-  margin-top:1rem;
+  margin-top:2rem;
+  width:100%;
+  table-layout: auto;
+  
 }
 
 .inspector-table > tr > th{
@@ -174,14 +193,24 @@ th, td, table {
   margin: 0px;
 }
 
+td{
+  padding:0.5rem 0.25rem 0.5rem 0.25rem;
+  word-wrap: normal;
+}
+
+ td > a{
+  font-size:0.65rem;
+  text-align:left;
+}
+
 a {
   text-decoration: none;
-  font-weight:bold;
+  font-weight:normal;
 }
 
 .admin-container{
   padding-top:2rem;
-  min-height:68vh;
+  min-height:63vh;
   padding-bottom:2rem;
 }
 

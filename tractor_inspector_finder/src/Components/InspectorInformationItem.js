@@ -4,6 +4,8 @@ const InspectorInformationItem = ({inspector, letter}) => {
 
     const [rating, setRating] = useState(inspector.rating);
     const [inspectorToUpdate, setInspectorToUpdate] = useState(null)
+    const [inspectorEmail, setInspectorEmail] = useState(`mailto:${inspector.email}`)
+    const [inspectorPhoneNumber, setInspectorPhoneNumber] = useState(`tel:${inspector.phoneNumber}`)
 
     const handleRating = (number) => {
         setRating(number)
@@ -47,12 +49,12 @@ const InspectorInformationItem = ({inspector, letter}) => {
         <>
 
             <tr>
-                <td>{letter}:</td>
+                <td>{letter}</td>
                 <td>{inspector.name}</td>
                 <td>{inspector.address}</td>  
                 <td>{inspector.distance} </td>
-                <td><a href={inspector.phoneNumber}>{inspector.phoneNumber}</a></td>
-                <td><a href={inspector.email}>{inspector.email}</a></td>
+                <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>
+                <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
 
                 {/* <li><span className="bold">Phone: </span><a href={this.state.activeMarkerPhoneNumber}>{this.state.activeMarker.phoneNumber}</a></li>

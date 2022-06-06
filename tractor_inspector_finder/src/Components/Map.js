@@ -120,7 +120,9 @@ export class MapComponent extends Component {
 
         return(
             <div className="map">
-            <h3> {this.state.inspectorInfo.length} results available: </h3>{this.state.count === 1?<h3>Found {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3>Found {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
+                <div className="map-info">
+                    <h3> {this.state.inspectorInfo.length} results found:   </h3>{this.state.count === 1?<h3> {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3> {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
+                </div>
                 <div className="button-container">
                     <button className="button map-button" onClick={handleIncreaseClick}>Increase Search Radius</button>
                     <button className="button map-button" onClick={handleDecreaseClick}>Decrease Search Radius</button>
@@ -153,7 +155,7 @@ export class MapComponent extends Component {
                 position = {{lat:this.state.activeMarker.lat , lng:this.state.activeMarker.lng }}
                 visible={true}>
                     <div>
-                            <ul>
+                            <ul className="info-window-list">
                                 <li><span className="bold">Rating: <Rating readonly={true} size={15} ratingValue={this.state.activeMarker.rating} /></span></li>
                                 <li><span className="bold">Name: </span>{this.state.activeMarker.name}</li>
                                 <li><span className="bold">Address: </span>{this.state.activeMarker.address}</li>

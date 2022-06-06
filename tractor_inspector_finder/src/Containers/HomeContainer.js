@@ -157,10 +157,11 @@ const HomeContainer = () => {
 
     return (
         <div className="home-container">
-            {isSearch === true ? <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button className="button new-search-button" onClick={handleNewSearchClick}>New Search</button> } 
+             
             {isError === true ? <h3>No results found.  Please check your postcode.</h3> : null}
             {resultsNotFound === true ? <h3>No inspectors found within range of this postcode</h3> : null}
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}
+            {isSearch === true ? <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button className="button new-search-button" onClick={handleNewSearchClick}>New Search</button> }
         </div>
     )
 }
