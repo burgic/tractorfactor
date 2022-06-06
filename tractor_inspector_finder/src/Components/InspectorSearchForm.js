@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import UpdateInspectorForm from './UpdateInspectorForm';
+// import {View, Text} from 'react-native'
 
 const InspectorSearchForm = () => {
 
@@ -35,8 +36,6 @@ const InspectorSearchForm = () => {
         .then(data => setSearchResults(data))
     }
 
-    
-
     useEffect(() => {
         if (searchResults !== null){
             mapResults()
@@ -45,7 +44,7 @@ const InspectorSearchForm = () => {
     
     const mapResults = () => {
         const mappedResults = searchResults.map((result, index) => {
-            return <tr><td>{result.name}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
+            return <tr><td>{result.name.toUpperCase()}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
             
         })
         setSearchResultsMap(mappedResults)
@@ -100,6 +99,7 @@ const InspectorSearchForm = () => {
                 <h3>Search</h3>
                 <label htmlFor='Inspector'>Inspector By Name: </label>
                 <input onChange={handleChange} type="search" ></input>
+                <p></p>
             </form>
 
             {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
