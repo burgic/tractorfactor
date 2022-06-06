@@ -75,6 +75,10 @@ const InspectorSearchForm = () => {
             });
     }
 
+    const handleUpdateSubmit = () => {
+        setInspectorToUpdate(null)
+    }
+
     useEffect(() => {
         if(idToDelete !== null){
             deleteInspector()
@@ -103,7 +107,7 @@ const InspectorSearchForm = () => {
             </form>
 
             {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
-            {inspectorToUpdate !== null ? <UpdateInspectorForm inspectorToUpdate={inspectorToUpdate} /> : null}
+            {inspectorToUpdate !== null ? <UpdateInspectorForm inspectorToUpdate={inspectorToUpdate} handleUpdateSubmit={handleUpdateSubmit} /> : null}
             {deleteWorked === true? <h3>Delete Successful</h3> : null}
         </>
     )
