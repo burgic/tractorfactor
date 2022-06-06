@@ -67,15 +67,13 @@ export class MapComponent extends Component {
             this.setMarkers()
         }
     }
-
     
     setMarkers = () => {
         const markerDeets = this.state.inspectorInfo.map((inspector, index) => {
             if(inspector.distance < this.state.searchDistance){
                 let letter = String.fromCharCode("A".charCodeAt(0) + index)
                 return   <Marker  key={index} icon={"http://maps.google.com/mapfiles/marker" + letter + ".png"} index={index} value={index} onClick={this.handleClickOpen} position = {{lat:inspector.lat , lng: inspector.lng}} inspector={inspector}>
-                        </Marker> 
-                    
+                        </Marker>   
             }
         })
         let total = markerDeets.length;

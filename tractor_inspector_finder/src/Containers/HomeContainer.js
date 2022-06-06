@@ -47,7 +47,7 @@ const HomeContainer = () => {
         if (searchCode != null){
         getTractorLatAndLong()
         }
-    }, [searchCode])
+    }, [searchCode, manufacturer])
 
     const getTractorLatAndLong = () => { // geocode postcode data
         fetch(`http://api.postcodes.io/postcodes/${searchCode}`)

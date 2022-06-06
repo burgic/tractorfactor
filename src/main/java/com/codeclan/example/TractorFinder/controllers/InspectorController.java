@@ -97,5 +97,5 @@ public class InspectorController {
         System.out.println(inspectorToUpdate.getTractors());
         return new ResponseEntity<>(inspectorToUpdate, HttpStatus.OK);
     }
-    
+
 }
