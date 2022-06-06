@@ -28,11 +28,13 @@ const AppContainer = () => {
                 <Link to="/" onClick={handleLandingFalseClick} activeStyle={{color: "red",textDecoration:"none"}}> Home</Link>
                 <Link to="admin" onClick={handleLandingFalseClick}> Admin</Link>
             </nav>
+          
         </header>
+        <hr></hr>
 
         {isLanding ? <Landing handleLandingClick={handleLandingClick} /> :<Outlet />}
             
-        
+        <hr></hr>
         <footer className="footer">
             <h5>ooR Industries &copy;</h5>
         </footer>
