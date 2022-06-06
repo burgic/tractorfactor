@@ -153,15 +153,23 @@ public class Inspector {
         this.tractors.add(tractor);
     }
 
+    public void clearTractorsList(){
+        this.tractors = new ArrayList<>();
+    }
+
     public List<Integer> getTractorIds() {
         return tractorIds;
     }
 
     public void addTractorId(Integer tractorId){this.tractorIds.add(tractorId);}
 
-//    public void setTractorIds(ArrayList tractorIds) {
-//        this.tractorIds = tractorIds;
-//    }
+    public void setTractorIds(ArrayList tractorIds) {
+        this.tractorIds = tractorIds;
+    }
+
+    public void clearTractorIds(){
+        this.tractorIds = new ArrayList<>();
+    }
 
     public int getNumberOfTractorIds(){
         return this.tractorIds.size();
