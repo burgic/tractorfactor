@@ -39,15 +39,17 @@ const TractorLocationForm = ({handleSearchCode, tractors, handleTractorManufactu
     return (
         <>
             <h2>Search For An Inspector</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="tractor">Manufacturer: </label> 
-                <select onChange={handleChange} name="tractors" id="tractors">
+
+            <form className="home-form" onSubmit={handleSubmit}>
+                <label  htmlFor="tractor">Manufacturer: </label> <br></br>
+                <select className="home-form-input" onChange={handleChange} name="tractors" id="tractors">
                     {mappedTractors}
                 </select>
                 <br></br>
-                <label htmlFor="postcode">Postcode: </label> 
-                <input onChange={handlePostcodeChange} type="text" name="postcode" />
-                <input type="submit" value="Search" />
+                <label  htmlFor="postcode">Postcode: </label> <br></br>
+                <input className="home-form-input" onChange={handlePostcodeChange} type="text" name="postcode" />
+                <br></br>
+                <input className="button" type="submit" value="Search" />
 
             </form>
             

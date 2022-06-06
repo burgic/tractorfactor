@@ -95,7 +95,8 @@ const InspectorSearchForm = () => {
 
     return(
         <>
-            <form >
+            <form className="inspector-search-form">
+                <h3>Search</h3>
                 <label htmlFor='Inspector'>Inspector By Name: </label>
                 <input onChange={handleChange} type="search" ></input>
                 <p></p>

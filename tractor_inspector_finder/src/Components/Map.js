@@ -99,9 +99,9 @@ export class MapComponent extends Component {
 
     render() {
         const mapStyles = {
-            width: '50%',
-            height: '50%',
-            // marginTop:'15rem'
+            width: '100%',
+            height: '100%',
+            
         };
 
        
@@ -120,11 +120,13 @@ export class MapComponent extends Component {
 
         return(
             <div className="map">
-            <h2>Found {this.state.count} inspectors within {this.state.searchDistance} miles</h2>
-            
+            <h3> {this.state.inspectorInfo.length} results available: </h3>{this.state.count === 1?<h3>Found {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3>Found {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
+                <div className="button-container">
+                    <button className="button map-button" onClick={handleIncreaseClick}>Increase Search Radius</button>
+                    <button className="button map-button" onClick={handleDecreaseClick}>Decrease Search Radius</button>
+                </div>
             <div className="map-container">
-            <button onClick={handleIncreaseClick}>Increase Search Radius</button>
-            <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
+            
             <br></br>
                 <Map
                 google={this.props.google}
@@ -166,11 +168,11 @@ export class MapComponent extends Component {
 
             </Map>
             </div>
-            <div>
+           
 
                  <InspectorInformation searchDistance = {this.state.searchDistance} inspectorsInfo={this.state.inspectorInfo}/>
             
-            </div>
+            
             </div>
         )
     }

@@ -1,9 +1,6 @@
 .App {
   text-align: center;
   color: rgb(5, 44, 11);
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 } 
 
 .button{
@@ -13,11 +10,11 @@
   background-color: white;
 }
 
-
 .button:hover{
   background-color:rgb(5, 44, 11);
   color:white;
   cursor:pointer;
+  font-weight:bold;
 }
 
 .nav-bar{
@@ -50,22 +47,47 @@
   margin-bottom:2rem;
 }
 
+.home-container{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
 
-.nav-bar{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.home-form{
+  
+  width:25%;
+  background-color:azure;
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+}
+
+.home-form > label{
+  font-weight:bold;
+}
+
+.home-form > .button{
+  margin-top:1rem;
   
 }
 
-
-
-.admin-container{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-
+.home-form-input{
+  width:9rem;
+  /* float:right; */
+  margin:0.5rem 0.25rem 0.5rem 0.25rem;
+  padding:0.5rem;
 }
+
+/* .left{
+  float:left;
+}
+
+.right{
+  float:right;
+} */
+
 
 footer {
   padding: 10px;
@@ -73,17 +95,33 @@ footer {
 }
 
 .map{
-  height:90vh;
+  height:auto;
+  width:100vw;
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
 }
 
+.button-container{
+  display:flex;
+  margin-top:0.5rem;
+}
+
+.map-button{
+  margin-left:0.5rem;
+  margin-right:0.5rem;
+}
 
 .map-container{
-  
-  height:55%;
+  height:65vh;
   width:50%;
+  /* margin:1rem; */
+  position:relative;
+}
+
+.map > h3{
+  margin:0.25rem;
 }
 
 .bold {
@@ -96,9 +134,80 @@ ul{
 
 .inspector-information{
   position:relative;
+  
+}
+
+.inspector-table{
+  margin-top:1rem;
+}
+
+.inspector-table > tr > th{
+  text-align:center;
+  font-size:0.75rem;
+  padding:0.25rem;
+}
+
+.inspector-table > tr > td{
+  font-size:0.75rem;
+}
+
+th, td, table {
+  border: 1px solid black;
+  border-collapse:collapse;
+  margin: 0px;
 }
 
 a {
   text-decoration: none;
   font-weight:bold;
 }
+
+.admin-container{
+  text-align: center;
+  display: flex;
+  height:100vh;
+}
+
+.admin-card-container{
+  display:flex;
+  justify-content:space-evenly;
+  height:50vh;
+  align-items:center;
+}
+
+.admin-card{
+  border:2px black solid;
+  border-radius:10px;
+  padding:2rem;
+}
+
+.admin-card:hover{
+  cursor:pointer;
+  background-color:rgb(5, 44, 11);
+  color:white;
+}
+
+.admin-form-container{
+  display:flex;
+  justify-content:center;
+}
+
+.add-inspector-form{
+  width:70%;
+}
+
+.add-inspector-form > input{
+  padding:0.5rem;
+  margin-left:0.25rem;
+}
+
+.add-tractor-form > input{
+  padding:0.5rem;
+  margin-left:0.25rem;
+}
+
+.inspector-search-form > input{
+  padding:0.5rem;
+
+}
+

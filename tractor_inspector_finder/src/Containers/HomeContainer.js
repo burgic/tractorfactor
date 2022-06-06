@@ -16,6 +16,7 @@ const HomeContainer = () => {
     const [inspectorDestinations, setInspectorDestinations] = useState(null)    
     const [isError, setIsError] = useState(false)
     const [resultsNotFound, setResultsNotFound] = useState(false)
+    const [isSearch, setIsSearch] = useState(true)
 
     const getTractors = () => {
         fetch(`http://localhost:8080/tractors`)
@@ -144,19 +145,21 @@ const HomeContainer = () => {
         return {lat:inspector.lat, lng: inspector.lng}
     })
     setInspectorLatLong(inspectorLatAndLong)
+    setIsSearch(false)
     }
         
+    const handleNewSearchClick = () =>{
+        setIsSearch(true)
+        setInspectorLatLong(null)
+    }
 
 
 
     return (
-
-        
-        
     
         <div className="home-container">
 
-            <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/>
+            {isSearch === true ? <TractorLocationForm tractors={tractors} handleSearchCode={handleSearchCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button className="button new-search-button" onClick={handleNewSearchClick}>New Search</button> } 
             {isError === true ? <h3>No results found.  Please check your postcode.</h3> : null}
             {resultsNotFound === true ? <h3>No inspectors found within range of this postcode</h3> : null}
             {inspectorLatLong != null ? <MapComponent inspectorLatLong={inspectorLatLong} tractorLocationData={tractorLatLong} inspectorDestinations={inspectorDestinations} /> : null}

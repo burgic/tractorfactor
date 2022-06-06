@@ -49,9 +49,14 @@ const InspectorInformationItem = ({inspector, letter}) => {
             <tr>
                 <td>{letter}:</td>
                 <td>{inspector.name}</td>
-                <td>{inspector.address}</td> 
+                <td>{inspector.address}</td>  
                 <td>{inspector.distance} </td>
-                <td><Rating onClick={handleRating} allowHalfIcon={true} size={25} ratingValue={rating} /></td>
+                <td><a href={inspector.phoneNumber}>{inspector.phoneNumber}</a></td>
+                <td><a href={inspector.email}>{inspector.email}</a></td>
+                <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
+
+                {/* <li><span className="bold">Phone: </span><a href={this.state.activeMarkerPhoneNumber}>{this.state.activeMarker.phoneNumber}</a></li>
+                <li><span className="bold">Email: </span><a href={this.state.activeMarkerEmail}>{this.state.activeMarker.email}</a></li> */}
             </tr>
             
         </>

@@ -18,7 +18,7 @@ const AppContainer = () => {
 
         <div className="nav-bar">
 
-            <h1>Tractor Factor</h1>
+            <h1>TractorFactor</h1>
             <nav>
 
                 <Link to="/"> Home</Link>
