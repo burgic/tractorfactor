@@ -51,7 +51,7 @@ const InspectorInformationItem = ({inspector, letter}) => {
                 <td>{inspector.name}</td>
                 <td>{inspector.address}</td> 
                 <td>{inspector.distance} </td>
-                <td><Rating onClick={handleRating} allowHalfIcon={true} size={25} ratingValue={rating} /></td>
+                <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
             </tr>
             
         </>
