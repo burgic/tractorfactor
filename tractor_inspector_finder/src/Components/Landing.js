@@ -14,7 +14,7 @@ const Landing = ({handleLandingClick}) => {
                 <div className="landing-page">
                 <div className="shading-div">
                     <h1 className="landing-header">TractorFactor</h1>
-                    <button onClick = {handleClick}>Get Started</button>
+                    <button className="button" onClick = {handleClick}>Get Started</button>
 
 
                 </div>

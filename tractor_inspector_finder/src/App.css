@@ -1,10 +1,24 @@
 .App {
   text-align: center;
-  
+  color: rgb(5, 44, 11);
   /* display: flex;
   justify-content: center;
   align-items: center; */
 } 
+
+.button{
+  padding:0.5rem 1rem 0.5rem 1rem;
+  border-radius:5px;
+  color:rgb(5, 44, 11);
+  background-color: white;
+}
+
+
+.button:hover{
+  background-color:rgb(5, 44, 11);
+  color:white;
+  cursor:pointer;
+}
 
 .nav-bar{
   display: flex;
@@ -33,6 +47,7 @@
   padding-top:10rem;
   font-size:3rem;
   margin:0;
+  margin-bottom:2rem;
 }
 
 .home-container{
