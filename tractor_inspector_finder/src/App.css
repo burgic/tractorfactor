@@ -75,24 +75,18 @@
 
 .home-form-input{
   width:9rem;
-  float:right;
+  /* float:right; */
   margin:0.5rem 0.25rem 0.5rem 0.25rem;
 }
 
-.left{
+/* .left{
   float:left;
 }
 
 .right{
   float:right;
-}
+} */
 
-.admin-container{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-
-}
 
 footer {
   padding: 10px;
@@ -166,4 +160,11 @@ th, td, table {
 a {
   text-decoration: none;
   font-weight:bold;
+}
+
+.admin-container{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
 }

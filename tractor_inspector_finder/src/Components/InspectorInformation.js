@@ -26,6 +26,8 @@ const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
                 <th>Name</th>
                 <th>Address: </th> 
                 <th>Distance: </th> 
+                <th>Phone: </th>
+                <th>Email: </th>
                 <th>Rating: </th>
             </tr>
             {inspectorInfo}

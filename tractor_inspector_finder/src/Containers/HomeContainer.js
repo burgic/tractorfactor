@@ -156,9 +156,6 @@ const HomeContainer = () => {
 
 
     return (
-
-        
-        
     
         <div className="home-container">
 
