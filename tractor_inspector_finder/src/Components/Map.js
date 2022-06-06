@@ -125,6 +125,7 @@ export class MapComponent extends Component {
             <div className="map-container">
             <button onClick={handleIncreaseClick}>Increase Search Radius</button>
             <button onClick={handleDecreaseClick}>Decrease Search Radius</button>
+            <br></br>
                 <Map
                 google={this.props.google}
                 zoom={8}

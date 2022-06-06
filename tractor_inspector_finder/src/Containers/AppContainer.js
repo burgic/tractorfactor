@@ -5,19 +5,23 @@ import React from 'react';
 const AppContainer = () => {
 
     return (
-        <div>
+        <>
+        
 
+        <div className="nav-bar">
+
+            <h1>Tractor Factor</h1>
             <nav>
 
-                <Link to="admin">Admin</Link>
                 <Link to="/"> Home</Link>
+                <Link to="admin"> Admin     </Link>
 
             </nav>
-
+        
+        </div>
             <Outlet />
 
-
-        </div>
+        </>
     )
 }
 
