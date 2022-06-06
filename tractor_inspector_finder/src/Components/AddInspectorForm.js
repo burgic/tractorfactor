@@ -209,12 +209,16 @@ const AddInspectorForm = () => {
             <input onChange={handleChange} type="text"  name="name" placeholder="name" required></input>
             <input onChange={handleChange} type="text"  name="postcode" placeholder="postcode" required></input>
             {/* <button>Get Co-ordinates</button> */}
+            
             <input onChange={handleChange} type="text" name="address" placeholder="address" required></input>
             <input onChange={handleChange} type="text" name="phoneNumber" placeholder="phone number" required></input>
             <input onChange={handleChange} type="email" name="email" placeholder="email" required></input>
+            <br></br>
+            <br></br>
             <fieldset>
                 {tractorMap}
             </fieldset>
+            <br></br>
             
             <input type="submit" value="Add Inspector"></input>
         </form>

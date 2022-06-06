@@ -18,8 +18,18 @@ const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
     
     return (
         <div className ="inspector-information">
+            <br></br>
             <h2>Inspector Information</h2>
-            <ul>{inspectorInfo}</ul>
+            <table className="Inspector-Table">
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Address: </th> 
+                <th>Distance: </th> 
+                <th>Rating: </th>
+            </tr>
+            {inspectorInfo}
+            </table>
         </div>
     )
 }

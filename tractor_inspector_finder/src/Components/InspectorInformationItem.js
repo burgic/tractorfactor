@@ -45,23 +45,15 @@ const InspectorInformationItem = ({inspector, letter}) => {
 
     return(
         <>
-            <table className="Inspector-Table">
-            <tr>
-                <th>Number</th>
-                <th>Name</th>
-                <th>Address: </th> 
-                <th>Distance: </th> 
-                <th>Rating: </th>
-            </tr>
+
             <tr>
                 <td>{letter}:</td>
                 <td>{inspector.name}</td>
                 <td>{inspector.address}</td> 
                 <td>{inspector.distance} </td>
-                <td>{inspector.rating} <Rating onClick={handleRating} allowHalfIcon={true} size={25} ratingValue={rating} /></td>
+                <td><Rating onClick={handleRating} allowHalfIcon={true} size={25} ratingValue={rating} /></td>
             </tr>
-            </table>
-
+            
         </>
 
     )
