@@ -205,7 +205,8 @@ const AddInspectorForm = () => {
 
     return(
         <>
-        <form onSubmit={handleSubmit}>
+        <form className="add-inspector-form" onSubmit={handleSubmit}>
+            <h3>Add Inspector</h3>
             <input onChange={handleChange} type="text"  name="name" placeholder="name" required></input>
             <input onChange={handleChange} type="text"  name="postcode" placeholder="postcode" required></input>
             {/* <button>Get Co-ordinates</button> */}
@@ -220,7 +221,7 @@ const AddInspectorForm = () => {
             </fieldset>
             <br></br>
             
-            <input type="submit" value="Add Inspector"></input>
+            <input className="button" type="submit" value="Add Inspector"></input>
         </form>
         { updateWorked === true ? <h3>Update successful</h3> : null }
         </>

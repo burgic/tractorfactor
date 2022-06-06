@@ -120,8 +120,7 @@ export class MapComponent extends Component {
 
         return(
             <div className="map">
-            <h3> {this.state.inspectorInfo.length} results available:</h3>
-           {this.state.count === 1?<h3>Found {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3>Found {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
+            <h3> {this.state.inspectorInfo.length} results available: </h3>{this.state.count === 1?<h3>Found {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3>Found {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
                 <div className="button-container">
                     <button className="button map-button" onClick={handleIncreaseClick}>Increase Search Radius</button>
                     <button className="button map-button" onClick={handleDecreaseClick}>Decrease Search Radius</button>

@@ -56,8 +56,8 @@
 }
 
 .home-form{
-  text-align:left;
-  width:50%;
+  
+  width:25%;
   background-color:azure;
   border:1px solid black;
   border-radius:5px;
@@ -70,13 +70,14 @@
 
 .home-form > .button{
   margin-top:1rem;
-  margin-left:40%;
+  
 }
 
 .home-form-input{
   width:9rem;
   /* float:right; */
   margin:0.5rem 0.25rem 0.5rem 0.25rem;
+  padding:0.5rem;
 }
 
 /* .left{
@@ -156,7 +157,6 @@ th, td, table {
   margin: 0px;
 }
 
-
 a {
   text-decoration: none;
   font-weight:bold;
@@ -165,6 +165,49 @@ a {
 .admin-container{
   text-align: center;
   display: flex;
-  flex-direction: column;
+  height:100vh;
+}
+
+.admin-card-container{
+  display:flex;
+  justify-content:space-evenly;
+  height:50vh;
+  align-items:center;
+}
+
+.admin-card{
+  border:2px black solid;
+  border-radius:10px;
+  padding:2rem;
+}
+
+.admin-card:hover{
+  cursor:pointer;
+  background-color:rgb(5, 44, 11);
+  color:white;
+}
+
+.admin-form-container{
+  display:flex;
+  justify-content:center;
+}
+
+.add-inspector-form{
+  width:70%;
+}
+
+.add-inspector-form > input{
+  padding:0.5rem;
+  margin-left:0.25rem;
+}
+
+.add-tractor-form > input{
+  padding:0.5rem;
+  margin-left:0.25rem;
+}
+
+.inspector-search-form > input{
+  padding:0.5rem;
 
 }
+
