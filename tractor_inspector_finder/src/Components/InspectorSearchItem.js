@@ -54,7 +54,7 @@ const InspectorSearchItem = ({inspector, handleDeleteButtonClick, handleUpdateBu
                 <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
-                <button onClick={handleUpdateButtonClick} value={inspector.id}>Update</button><button onClick={handleDeleteButtonClick} value={inspector.id}>Delete</button>
+                <button className="button small" onClick={handleUpdateButtonClick} value={inspector.id}>Update</button><button className="button small" onClick={handleDeleteButtonClick} value={inspector.id}>Delete</button>
             </tr>
             
         </>

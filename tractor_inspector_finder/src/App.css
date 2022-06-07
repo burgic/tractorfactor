@@ -16,6 +16,12 @@
   background-color: white;
 }
 
+.small{
+  padding:0;
+  margin-bottom:0.25rem;
+  width:3rem;
+}
+
 .button:hover{
   background-color:rgb(5, 44, 11);
   color:white;
@@ -143,6 +149,10 @@ a:visited{
   margin:0;
 }
 
+.map-info-item{
+  padding: 0 1rem 0 1rem;
+}
+
 .button-container{
   display:flex;
   margin-top:0.5rem;
@@ -236,15 +246,25 @@ a {
 .admin-card-container{
   display:flex;
   justify-content:space-evenly;
-  height:30vh;
+  flex-wrap:wrap;
+  /* height:30vh; */
   align-items:center;
-  color:rgb(5, 44, 11)
+  color:rgb(5, 44, 11);
+  /* padding:2rem 0 2rem 0; */
+  padding:2rem;
 }
 
 .admin-card{
   border:2px green solid;
   border-radius:10px;
   padding:2rem;
+  margin:1rem;
+  height:5rem;
+  flex:15%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
 }
 
 .admin-card:hover{
@@ -332,6 +352,9 @@ tr:hover{
     width:50%;
   }
   
+  .add-inspector-form, .add-tractor-form, .inspector-search-form{
+    width:70%;
+  }
 
   .map-container{
     width:80%;
@@ -349,5 +372,11 @@ tr:hover{
 
   .map-button{
     width:9rem;
+  }
+}
+
+@media (max-width: 1000px){
+  .admin-card{
+    font-size:0.75rem;
   }
 }

@@ -43,7 +43,7 @@ const AdminContainer = () => {
         setIsInspectorsActive(!isInspectorsActive)
     }
 
-    
+     
 
     return (
         <div className="admin-container">

@@ -214,7 +214,7 @@ const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
     return (
         <>
             <h2>Update</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="add-inspector-form" onSubmit={handleSubmit}>
                 <input onChange={handleChange} type="text" value={name} name="name" required></input>
                 <input onChange={handleChange} type="text" value={postcode} name="postcode" placeholder="postcode" required></input>
             {/* <button>Get Co-ordinates</button> */}
@@ -224,7 +224,7 @@ const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
                 <fieldset>
                     {tractorMap}
                 </fieldset>
-                <input type="submit" value="update"></input>
+                <input className="button" type="submit" value="update"></input>
             {updateWorked === true ? <h3>Update Successful</h3> : null}
 
             </form>

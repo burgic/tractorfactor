@@ -121,7 +121,7 @@ export class MapComponent extends Component {
         return(
             <div className="map">
                 <div className="map-info">
-                    <h3> {this.state.inspectorInfo.length} results found:   </h3>{this.state.count === 1?<h3> {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3> {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
+                    <h3 className="map-info-item"> {this.state.inspectorInfo.length} results found:   </h3>{this.state.count === 1?<h3 className="map-info-item"> {this.state.count} inspector within {this.state.searchDistance} miles</h3> : <h3 className="map-info-item"> {this.state.count} inspectors within {this.state.searchDistance} miles</h3>}
                 </div>
                 <div className="button-container">
                     <button className="button map-button" onClick={handleIncreaseClick}>Increase Search Radius</button>

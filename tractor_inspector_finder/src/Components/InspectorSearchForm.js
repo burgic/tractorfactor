@@ -52,6 +52,7 @@ const InspectorSearchForm = () => {
     }
 
     const handleUpdateButtonClick = (evt) => {
+       
         setIdToUpdate(evt.target.value)
     }
 
@@ -108,9 +109,12 @@ const InspectorSearchForm = () => {
             </form>
             
             
-            {searchResultsMap !== null ? <table className="inspector-table"><tr><th>Name</th><th>Address </th> <th>Phone </th><th>Email </th><th>Rating </th></tr><tbody>{searchResultsMap}</tbody></table>: null}
+            <div className="inspector-information">
+            {searchResultsMap !== null ? <table className="inspector-table"><tr><th>Name</th><th>Address </th> <th>Phone </th><th>Email </th><th>Rating </th></tr>{searchResultsMap}</table>: null}
+            </div>
             {inspectorToUpdate !== null ? <UpdateInspectorForm inspectorToUpdate={inspectorToUpdate} handleUpdateSubmit={handleUpdateSubmit} /> : null}
             {deleteWorked === true? <h3>Delete Successful</h3> : null}
+            
         </>
     )
 

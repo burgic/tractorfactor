@@ -27,7 +27,7 @@ const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
                 <th>Address </th> 
                 <th>Distance </th> 
                 <th>Phone </th>
-                <th>Email </th>
+                <th>Email </th> 
                 <th>Rating </th>
             </tr>
             {inspectorInfo}
