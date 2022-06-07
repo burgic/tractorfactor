@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import UpdateInspectorForm from './UpdateInspectorForm';
+import InspectorSearchItem from './InspectorSearchItem';
 // import {View, Text} from 'react-native'
 
 const InspectorSearchForm = () => {
@@ -44,8 +45,8 @@ const InspectorSearchForm = () => {
     
     const mapResults = () => {
         const mappedResults = searchResults.map((result, index) => {
-            return <tr><td>{result.name.toUpperCase()}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
-            
+            // return <tr><td>{result.name.toUpperCase()}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
+            return <InspectorSearchItem inspector = {result} key={index} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} />
         })
         setSearchResultsMap(mappedResults)
     }
@@ -70,7 +71,7 @@ const InspectorSearchForm = () => {
             } 
             throw new Error('shiiiit')
         })
-        .catch((error) => {
+        .catch((error) => { 
             console.log(error)
             });
     }
@@ -105,8 +106,9 @@ const InspectorSearchForm = () => {
                 <input onChange={handleChange} type="search" ></input>
                 <p></p>
             </form>
-
-            {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null}
+            
+            
+            {searchResultsMap !== null ? <table className="inspector-table"><tr><th>Name</th><th>Address </th> <th>Phone </th><th>Email </th><th>Rating </th></tr><tbody>{searchResultsMap}</tbody></table>: null}
             {inspectorToUpdate !== null ? <UpdateInspectorForm inspectorToUpdate={inspectorToUpdate} handleUpdateSubmit={handleUpdateSubmit} /> : null}
             {deleteWorked === true? <h3>Delete Successful</h3> : null}
         </>

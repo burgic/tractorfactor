@@ -24,11 +24,11 @@ const InspectorInformation = ({inspectorsInfo, searchDistance}) => {
             <tr>
                 <th></th>
                 <th>Name</th>
-                <th>Address: </th> 
-                <th>Distance: </th> 
-                <th>Phone: </th>
-                <th>Email: </th>
-                <th>Rating: </th>
+                <th>Address </th> 
+                <th>Distance </th> 
+                <th>Phone </th>
+                <th>Email </th>
+                <th>Rating </th>
             </tr>
             {inspectorInfo}
             </table>
