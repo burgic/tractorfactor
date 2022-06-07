@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Rating} from 'react-simple-star-rating';
-const InspectorInformationItem = ({inspector, letter}) => {
+const InspectorSearchItem = ({inspector, handleDeleteButtonClick, handleUpdateButtonClick}) => {
 
     const [rating, setRating] = useState(inspector.rating);
     const [inspectorToUpdate, setInspectorToUpdate] = useState(null)
@@ -41,7 +41,7 @@ const InspectorInformationItem = ({inspector, letter}) => {
         }
     
     
-{/* <span className="bold"></span> */}
+
      
 
 
@@ -49,20 +49,16 @@ const InspectorInformationItem = ({inspector, letter}) => {
         <>
 
             <tr>
-                <td>{letter}</td>
                 <td>{inspector.name}</td>
                 <td>{inspector.address}</td>  
-                <td>{inspector.distance} </td>
                 <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
-
-                {/* <li><span className="bold">Phone: </span><a href={this.state.activeMarkerPhoneNumber}>{this.state.activeMarker.phoneNumber}</a></li>
-                <li><span className="bold">Email: </span><a href={this.state.activeMarkerEmail}>{this.state.activeMarker.email}</a></li> */}
+                <button className="button small" onClick={handleUpdateButtonClick} value={inspector.id}>Update</button><button className="button small" onClick={handleDeleteButtonClick} value={inspector.id}>Delete</button>
             </tr>
             
         </>
 
     )
 }
-export default InspectorInformationItem;
+export default InspectorSearchItem;

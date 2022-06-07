@@ -17,7 +17,7 @@ const AdminContainer = () => {
 
     const handleInspectorClick = (evt) => {
         setIsInspectorActive(!isInspectorActive)
-        setIsTractorActive(false)
+        setIsTractorActive(false) 
         setIsSearchActive(false)
         setIsInspectorsActive(false)
     }
@@ -42,6 +42,8 @@ const AdminContainer = () => {
         setIsSearchActive(false)
         setIsInspectorsActive(!isInspectorsActive)
     }
+
+     
 
     return (
         <div className="admin-container">

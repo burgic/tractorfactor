@@ -30,12 +30,13 @@ const AppContainer = () => {
             </nav>
           
         </header>
-        <hr></hr>
+        
 
         {isLanding ? <Landing handleLandingClick={handleLandingClick} /> :<Outlet />}
             
-        <hr></hr>
+       
         <footer className="footer">
+        
             <h5>ooR Industries &copy;</h5>
         </footer>
         </>
