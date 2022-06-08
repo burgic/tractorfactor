@@ -54,6 +54,7 @@ public class InspectorController {
                 inspector.getLng()
         );
                 inspector.setRating(0);
+                inspector.setNotes(" ");
         for (int i=0; i<inspector.getNumberOfTractorIds(); i++) {
             int id = (int)inspector.getTractorIds().get(i);
             inspectorToAdd.addTractorId(id);
@@ -81,6 +82,7 @@ public class InspectorController {
         inspectorToUpdate.setLat(inspector.getLat());
         inspectorToUpdate.setLng(inspector.getLng());
         inspectorToUpdate.setRating(inspector.getRating());
+        inspectorToUpdate.setNotes(inspector.getNotes());
 
         inspectorToUpdate.clearTractorIds();
         inspectorToUpdate.clearTractorsList();
