@@ -347,6 +347,38 @@ tr:hover{
   background-color:rgb(234, 246, 236);
 }
 
+.inspector-notes-container{
+  position:absolute;
+  right:0;
+  /* top:8rem; */
+  background-color:rgb(234, 246, 236);
+  width:200px;
+  height:200px;
+  z-index:1;
+  border: 1px solid black;
+  border-radius:5px; 
+}
+
+.inspector-notes-container > h3{
+  margin:0;
+  text-align:center;
+  padding-top:0.5rem;
+}
+
+.inspector-notes-container > form > textarea{
+  width:90%;
+  height:5rem;
+  background-color:white;
+  border:none;
+  margin: 1rem 0rem 1rem 0rem;
+}
+
+.notes-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-evenly;
+}
+
 @media (max-width: 751px){
   .home-form{
     width:50%;

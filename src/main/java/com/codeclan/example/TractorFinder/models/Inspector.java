@@ -40,6 +40,9 @@ public class Inspector {
     @Column(name="rating")
     private int rating;
 
+    @Column(name="notes")
+    private String notes;
+
     @Column(name="tractor_ids")
     private ArrayList<Integer> tractorIds;
 
@@ -62,6 +65,7 @@ public class Inspector {
         this.lat = lat;
         this.lng = lng;
         this.rating = rating;
+        this.notes = notes;
         this.tractors = new ArrayList<>();
         this.tractorIds = new ArrayList<>();
     }
@@ -139,6 +143,14 @@ public class Inspector {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public List<Tractor> getTractors() {
