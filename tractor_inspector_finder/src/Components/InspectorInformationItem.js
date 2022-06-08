@@ -39,9 +39,6 @@ const InspectorInformationItem = ({inspector, letter}) => {
             console.log(error)
             });
         }
-    
-    
-{/* <span className="bold"></span> */}
      
 
 
@@ -56,9 +53,6 @@ const InspectorInformationItem = ({inspector, letter}) => {
                 <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
-
-                {/* <li><span className="bold">Phone: </span><a href={this.state.activeMarkerPhoneNumber}>{this.state.activeMarker.phoneNumber}</a></li>
-                <li><span className="bold">Email: </span><a href={this.state.activeMarkerEmail}>{this.state.activeMarker.email}</a></li> */}
             </tr>
             
         </>

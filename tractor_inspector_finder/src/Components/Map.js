@@ -5,8 +5,6 @@ import InspectorInformation from "./InspectorInformation";
 import Tractor from '../static/tractor (3).png'
 import {Rating} from 'react-simple-star-rating';
 
-
-
 export class MapComponent extends Component {
 
     constructor(props) {
@@ -101,7 +99,6 @@ export class MapComponent extends Component {
         const mapStyles = {
             width: '100%',
             height: '100%',
-            
         };
 
        

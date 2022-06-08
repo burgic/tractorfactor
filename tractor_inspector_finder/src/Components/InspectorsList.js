@@ -86,7 +86,6 @@ const InspectorsList = () => {
     return(
         <>
         <h3>All Inspectors</h3>
-        {/* {searchResultsMap !== null ? <table><tbody>{searchResultsMap}</tbody></table>: null} */}
         <div className="inspector-information">
         {searchResultsMap !== null ? <table className="inspector-table"><tr><th>Name</th><th>Address </th> <th>Phone </th><th>Email </th><th>Rating </th></tr>{searchResultsMap}</table>: null}
         </div>
