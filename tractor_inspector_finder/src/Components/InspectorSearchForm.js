@@ -46,7 +46,7 @@ const InspectorSearchForm = () => {
     const mapResults = () => {
         const mappedResults = searchResults.map((result, index) => {
             // return <tr><td>{result.name.toUpperCase()}</td><td>{result.postcode}</td><td>{result.address}</td><td>{result.phoneNumber}</td><td>{result.email}</td><button onClick={handleUpdateButtonClick} value={result.id}>Update</button><button onClick={handleDeleteButtonClick} value={result.id}>Delete</button></tr>
-            return <InspectorSearchItem inspector = {result} key={index} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} />
+            return <InspectorSearchItem inspector = {result} index={index} key={index} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} />
         })
         setSearchResultsMap(mappedResults)
     }

@@ -1,18 +1,29 @@
 import React, {useState, useEffect} from "react";
 import {Rating} from 'react-simple-star-rating';
-const InspectorInformationItem = ({inspector, letter}) => {
+
+import InspectorNotes from "./InspectorNotes";
+import Notes from '../static/notes-icon.png';
+const InspectorInformationItem = ({inspector, index, letter}) => {
 
     const [rating, setRating] = useState(inspector.rating);
     const [inspectorToUpdate, setInspectorToUpdate] = useState(null)
     const [inspectorEmail, setInspectorEmail] = useState(`mailto:${inspector.email}`)
     const [inspectorPhoneNumber, setInspectorPhoneNumber] = useState(`tel:${inspector.phoneNumber}`)
+    const [isNotes, setIsNotes] = useState(false);
+
 
     const handleRating = (number) => {
         setRating(number)
-        let temp =inspector
+        let temp = inspector
         temp.rating = number
         setInspectorToUpdate(temp)
     } 
+
+    const handleNotes = (notes) => {
+        let temp = inspector
+        temp.notes = notes
+        setInspectorToUpdate(temp)
+    }
 
     useEffect (() => {
         if (inspectorToUpdate !== null){
@@ -40,11 +51,12 @@ const InspectorInformationItem = ({inspector, letter}) => {
             });
         }
      
-
+        const handleNotesClick = (evt) => {
+            setIsNotes(!isNotes)
+        }
 
     return(
         <>
-
             <tr>
                 <td>{letter}</td>
                 <td>{inspector.name}</td>
@@ -53,7 +65,11 @@ const InspectorInformationItem = ({inspector, letter}) => {
                 <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
-            </tr>
+                <td><div className="table-buttons">
+                    <button className="notes" onClick={handleNotesClick}><img src={Notes} height="33px" width="40px" /></button></div></td>
+                    {isNotes ? <InspectorNotes handleNotesClick={handleNotesClick} inspector={inspector} index={index} handleNotes={handleNotes} /> : null}
+                
+                    </tr>
             
         </>
 
