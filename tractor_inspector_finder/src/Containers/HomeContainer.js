@@ -117,8 +117,6 @@ const HomeContainer = () => {
                 setResultsNotFound(false)
             }, 2000)
         }
-        
-        // .then(() => {fetchInspectors()})
     }
 
     const fetchInspectors = () => {

@@ -18,10 +18,7 @@ const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
     const [updateWorked, setUpdateWorked] = useState(false)
     const [checkedState, setCheckedState] = useState(null)
 
-    // const handleSubmit = (evt) => {
-    //     evt.preventDefault()
-    //     console.log(evt.target.value)
-    // }
+   
 
     useEffect(() => {
         getTractors()
@@ -98,26 +95,6 @@ const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
     
         setCheckedState(updatedCheckedState);
     }
-
-    // let array=inspectorToUpdate.tractorIds;
-    // const handleCheckboxChange = (evt) => {
-    //     if (array.length > 0){
-    //         for (let i=0; i< array[0].length; i++){
-    //             if (array[0][i] === parseInt(evt.target.value)){
-    //                 console.log(array[0])
-    //                 array[0].splice(i, 1)
-    //                 setTractorsArray([array])
-    //             } 
-    //         } array.push(parseInt(evt.target.value))
-    //         setTractorsArray([array])
-    //     }
-    //     else {
-    //             array.push(parseInt(evt.target.value))
-    //             setTractorsArray([array])
-    //         }
-           
-    //         }
-
 
     const handleChange = (evt) => {
         const state = evt.target.name
@@ -217,7 +194,6 @@ const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
             <form className="add-inspector-form" onSubmit={handleSubmit}>
                 <input onChange={handleChange} type="text" value={name} name="name" required></input>
                 <input onChange={handleChange} type="text" value={postcode} name="postcode" placeholder="postcode" required></input>
-            {/* <button>Get Co-ordinates</button> */}
                 <input onChange={handleChange} type="text" value={address} name="address" placeholder="address" required></input>
                 <input onChange={handleChange} type="text" value={phoneNumber} name="phoneNumber" placeholder="phone number" required></input>
                 <input onChange={handleChange} type="email" value={email} name="email" placeholder="email" required></input>
