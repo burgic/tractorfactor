@@ -25,7 +25,7 @@ const AppContainer = () => {
         <header className="nav-bar">
             <Link to="/" activeStyle={{color: "red",textDecoration:"none"}}><h1 onClick={handleLandingTrueClick}>TractorFactor</h1></Link>
             <nav>
-                <Link to="/" onClick={handleLandingFalseClick} activeStyle={{color: "red",textDecoration:"none"}}> Home</Link>
+                <Link to="/" onClick={handleLandingFalseClick} activeStyle={{color: "red",textDecoration:"none"}}> Search Inspectors</Link>
                 <Link to="admin" onClick={handleLandingFalseClick}> Admin</Link>
             </nav>
           

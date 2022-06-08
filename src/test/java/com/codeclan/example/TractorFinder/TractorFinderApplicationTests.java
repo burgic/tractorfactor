@@ -22,6 +22,7 @@ class TractorFinderApplicationTests {
 
 	@Test
 	public void canFindInspectorsWithLatGreaterThanAndShorterAndLngGreaterThanAndShorterThan(){
+
 		List<Inspector> inspectors = inspectorRepository.findByLatGreaterThanAndLatLessThanAndLngGreaterThanAndLngLessThan(54.5, 56.5, -4.5, -2.5);
 		assertEquals(5, inspectors.size() );
 	}
