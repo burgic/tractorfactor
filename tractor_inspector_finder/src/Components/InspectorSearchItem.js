@@ -63,7 +63,7 @@ const InspectorSearchItem = ({inspector, index, handleDeleteButtonClick, handleU
         <>
 
             <tr>
-                <td>{inspector.name}</td>
+                <td className="inspector-name">{inspector.name}</td>
                 <td>{inspector.address}</td>  
                 <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>

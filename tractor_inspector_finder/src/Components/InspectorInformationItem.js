@@ -59,7 +59,7 @@ const InspectorInformationItem = ({inspector, index, letter}) => {
         <>
             <tr>
                 <td>{letter}</td>
-                <td>{inspector.name}</td>
+                <td className="inspector-name">{inspector.name}</td>
                 <td>{inspector.address}</td>  
                 <td>{inspector.distance} </td>
                 <td><a href={inspectorPhoneNumber}>{inspector.phoneNumber}</a></td>

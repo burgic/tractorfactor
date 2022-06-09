@@ -237,6 +237,10 @@ a {
   font-weight:normal;
 }
 
+.inspector-name{
+  text-transform:capitalize;
+}
+
 .admin-container{
   padding-top:2rem;
   min-height:75vh;
