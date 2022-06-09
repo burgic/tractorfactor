@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 public class InspectorController {
@@ -45,7 +46,7 @@ public class InspectorController {
     @PostMapping(value = "/inspectors")
     public ResponseEntity<Inspector> postInspector(@RequestBody Inspector inspector){
         Inspector inspectorToAdd = new Inspector(
-                inspector.getName(),
+                inspector.getName().toLowerCase(Locale.ROOT),
                 inspector.getPostcode(),
                 inspector.getAddress(),
                 inspector.getPhoneNumber(),
@@ -75,7 +76,7 @@ public class InspectorController {
     public ResponseEntity<Inspector> putInspector(@RequestBody Inspector inspector, @PathVariable Long id){
         System.out.println(inspector.getRating());
         Inspector inspectorToUpdate = inspectorRepository.findById(id).get();
-        inspectorToUpdate.setName(inspector.getName());
+        inspectorToUpdate.setName(inspector.getName().toLowerCase(Locale.ROOT));
         inspectorToUpdate.setPostcode((inspector.getPostcode()));
         inspectorToUpdate.setAddress(inspector.getAddress());
         inspectorToUpdate.setPhoneNumber(inspector.getPhoneNumber());

@@ -192,7 +192,7 @@ const UpdateInspectorForm = ({inspectorToUpdate, handleUpdateSubmit}) => {
         <>
             <h2>Update</h2>
             <form className="add-inspector-form" onSubmit={handleSubmit}>
-                <input onChange={handleChange} type="text" value={name} name="name" required></input>
+                <input className="inspector-name" onChange={handleChange} type="text" value={name} name="name" required></input>
                 <input onChange={handleChange} type="text" value={postcode} name="postcode" placeholder="postcode" required></input>
                 <input onChange={handleChange} type="text" value={address} name="address" placeholder="address" required></input>
                 <input onChange={handleChange} type="text" value={phoneNumber} name="phoneNumber" placeholder="phone number" required></input>

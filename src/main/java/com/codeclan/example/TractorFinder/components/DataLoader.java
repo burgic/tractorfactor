@@ -93,7 +93,7 @@ public class DataLoader implements ApplicationRunner {
         System.out.println(Info2);
 
         for (int i = 1; i < Info2.size(); i++) {
-            Inspector inspector = new Inspector(Info2.get(i).get(0),
+            Inspector inspector = new Inspector(Info2.get(i).get(0).toLowerCase(Locale.ROOT),
                     Info2.get(i).get(1),
                     Info2.get(i).get(2),
                     Info2.get(i).get(3),
